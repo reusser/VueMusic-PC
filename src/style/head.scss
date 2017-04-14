@@ -128,11 +128,34 @@ $netRed: #c62f2f;
   }
   .head-dialog {
     position: absolute;
-    width: 28rem;
     margin-top: .1rem;
     background-color: #fafafa;
-    box-shadow: 0 0 5px #aaa;
+    box-shadow: 0 0 6px #aaa;
     border-radius: 3px;
+    &.show-option {
+      left: -5rem;
+      &:before {
+        visibility: visible;
+      }
+    }
+    &.show-theme {
+      left: .4rem;
+      &:before {
+        visibility: visible;
+      }
+    }
+    &:before {
+      visibility: hidden;
+      position: absolute;
+      top: -1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      content: '';
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-bottom-color: #fafafa;
+    }
     .user-option {
       height: 40rem;
       width: 28rem;
@@ -199,6 +222,163 @@ $netRed: #c62f2f;
           border-right: none;
         }
       }
+    }
+    .msg {
+      margin-top: 2rem;
+      list-style: none;
+      li {
+        position: relative;
+        height: 3.5rem;
+        line-height: 3.5rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        &:nth-of-type(1),
+        &:nth-of-type(4),
+        &:last-child {
+          border-top: 2px solid #ecedee;
+        }
+        &:last-child {
+          height: 6rem;
+          line-height: 6rem;
+        }
+        &:hover {
+          background-color: #ecedee;
+        }
+        span:nth-of-type(2) {
+          position: absolute;
+          right: 1rem;
+          color: #a7a7a7;
+        }
+      }
+      .fa {
+        color: #bebebe;
+        margin: {
+          left: 2rem;
+          right: 2rem;
+        }
+      }
+      .fa-mobile {
+        font-size: 2rem;
+        margin-left: 2.2rem;
+        margin-right: 2.5rem;
+        vertical-align: middle;
+      }
+      .fa-weibo,
+      .fa-weixin {
+        margin: {
+          left: 1rem;
+          right: 0;
+        }
+        font-size: 2rem;
+        vertical-align: middle;
+      }
+      .level {
+        font-weight: 700;
+        font-style: italic;
+      }
+      .gt {
+        margin-left: 1rem;
+        color: #ddd;
+        font-weight: normal;
+      }
+    }
+    .theme-option {
+      width: 32rem;
+      .theme-head {
+        position: relative;
+        padding-bottom: 5px;
+        margin: 10px 10px 2px 15px;
+        line-height: normal;
+        font-size: 1.3rem;
+        border-bottom: 1px solid #ccc;
+        &:after {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          content: '';
+          width: 2.6rem;
+          height: 2px;
+          background-color: #ccc;
+        }
+      }
+      ul {
+        height: 10rem;
+        list-style: none;
+        text-align: center;
+        line-height: 10rem;
+        li {
+          position: relative;
+          display: inline-block;
+          width: 9rem;
+          height: 9rem;
+          vertical-align: middle;
+          cursor: pointer;
+          span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 2.5rem;
+            padding-left: 1rem;
+            font-size: 1.3rem;
+            color: #fafafa;
+            line-height: 2.5rem;
+            text-align: left;
+            background: rgba(130, 130, 130, .1);
+          }
+        }
+      }
+      .line-one {
+        margin-top: 1rem;
+        li:nth-of-type(1) {
+          background-color: #16181c;
+          &:hover {
+            box-shadow: 0 0 5px #333;
+          }
+        }
+        li:nth-of-type(2) {
+          background-color: $netRed;
+          margin: {
+            left: .5rem;
+            right: .5rem;
+          }
+          &:hover {
+            box-shadow: 0 0 5px $netRed;
+          }
+        }
+        li:nth-of-type(3) {
+          background-color: #f9a0c3;
+          &:hover {
+            box-shadow: 0 0 5px #f9a0c3;
+          }
+        }
+      }
+      .line-two {
+        margin-bottom: 1rem;
+        li:nth-of-type(1) {
+          background-color: #40aaf8;
+          &:hover {
+            box-shadow: 0 0 5px #40aaf8;
+          }
+        }
+        li:nth-of-type(2) {
+          background-color: #3bba7d;
+          margin: {
+            left: .5rem;
+            right: .5rem;
+          }
+          &:hover {
+            box-shadow: 0 0 5px #3bba7d;
+          }
+        }
+        li:nth-of-type(3) {
+          background-color: #d89f55;
+          &:hover {
+            box-shadow: 0 0 5px #d89f55;
+          }
+        }
+      }     
     }
   }
 }
