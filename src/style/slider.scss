@@ -1,0 +1,48 @@
+.progress-container {
+  position: relative;
+  display: inline-block;
+    width: 100rem;
+    height: .5rem;
+    margin: {
+      left: 1rem;
+      right: 1rem;
+    }
+    vertical-align: middle;
+    background-color: #e8e8e8;
+    border-radius: 5px;
+    .progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 5px;
+      width: 0;
+      border-radius: 5px;
+      background-color: #e83c3c;
+    }
+    .dot {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 1.5rem;
+      height: 1.5rem;
+      text-align: center;
+      line-height: 1.5rem;
+      background-color: #fff;
+      border: 1px solid #cdcdcd;
+      border-radius: 50%;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0 0 5px #bbb;
+      }
+      .circle {
+        display: inline-block;
+        height: .5rem;
+        width: .5rem;
+        margin-bottom: 2px;
+        vertical-align: middle;
+        border-radius: 50%;
+        background-color: #e83c3c;
+      }
+    }
+}

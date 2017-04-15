@@ -1,0 +1,58 @@
+.music-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 4.6rem;
+  line-height: 4.6rem;
+  background-color: #f6f6f8;
+  border-top: 1px solid #e4e4e4;
+  .footer-left {
+    display: inline-block;
+    > span {
+      display: inline-block;
+      border-radius: 50%;
+      background-color: #e83c3c;
+      cursor: pointer;
+      &:hover {
+        background-color: #d33030;
+      }
+      i {
+        color: #fff;
+      }
+    }
+    .back,
+    .next {
+      height: 3rem;
+      width: 3rem;
+      margin: {
+        left: 2rem;
+        right: 2rem;
+      }
+      line-height: 3rem;
+      text-align: center;
+    }
+    .back {
+      margin-left: 3rem;
+    }
+    .next {
+      margin-right: 3rem;
+    }
+    .play-pause {
+      height: 3.5rem;
+      width: 3.5rem;
+      line-height: 3.5rem;
+      text-align: center;
+      .fa-play {
+        margin-left: 2px;
+        font-size: 1.8rem;
+        vertical-align: middle;
+      }
+    }
+  }
+  .time {
+    font-size: 1.2rem;
+    color: #555;
+  }
+}
