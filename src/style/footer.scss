@@ -55,4 +55,55 @@
     font-size: 1.2rem;
     color: #555;
   }
+  .value {
+    margin-left: 1.8rem;
+    color: #666;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    &:hover {
+      color: #444;
+    }
+  }
+  .play-state {
+    .fa {
+      font-size: 1.8rem;
+      color: #666;
+      vertical-align: middle;
+      cursor: pointer;
+      &:hover {
+        color: #444;
+      }
+    }
+  }
+  .list-icon {
+    position: absolute;
+    left: -1.7rem;
+    top: 0;
+    vertical-align: middle;
+  }
+  .fa-file-text-o {
+    font-size: 1.8rem;
+    vertical-align: middle;
+    color: #686868;
+  }
+  .list-num {
+    position: relative;
+    display: inline-block;
+    width: 4rem;
+    height: 2rem;
+    margin-left: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #686868;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #e1e1e2;
+    cursor: pointer;
+    &:hover .fa-file-text-o {
+      color: #4f4f4f;
+    }
+  }
 }

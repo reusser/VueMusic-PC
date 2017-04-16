@@ -1,7 +1,7 @@
 .progress-container {
   position: relative;
   display: inline-block;
-    width: 100rem;
+    width: 95rem;
     height: .5rem;
     margin: {
       left: 1rem;
@@ -22,7 +22,7 @@
     .dot {
       position: absolute;
       top: 50%;
-      left: 0;
+      left: -10px;
       transform: translateY(-50%);
       width: 1.5rem;
       height: 1.5rem;
