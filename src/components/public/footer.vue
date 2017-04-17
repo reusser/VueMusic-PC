@@ -30,7 +30,8 @@
         :totalVal="1"
         :width="100"
         :style="{'margin-left': '5px'}"
-        @skip="skipVolume"></v-slider>
+        @skip="skipVolume"
+        @move="moveVolume"></v-slider>
       <span class="play-state"
         @click="playStateIndex = playStateIndex === 3 ? 0 : ++playStateIndex"
       >
@@ -146,6 +147,17 @@ import vSlider from '../slider.vue'
         } 
         this.$refs.audio.currentTime = value / 950 * this.tolTimeNum
         this.curTimeNum = this.$refs.audio.currentTime
+      },
+      moveVolume(value) {
+        if (value === 0) {
+          this.$refs.audio.volume = 0
+          this.volume = 0
+          this.saveVolume = this.volume
+          return
+        } 
+        this.$refs.audio.volume = value / 100 * 1
+        this.volume = this.$refs.audio.volume
+        this.saveVolume = this.volume
       }
     }
   }

@@ -3,16 +3,17 @@
     @mousedown="skip"
     ref="progress"
     :style="{width: `${width}px`}">
-    <div class="progress" :style="{width: ismove ? `${dragWidth}px` : `${proWidth}px`}"></div>
-    <span class="dot" 
-      :style="{transform: ismove ? `translateX(${dragWidth}px) translateY(-50%)` : `translateX(${proWidth}px) translateY(-50%)`}" 
-      @mousedown="moveInit"
-      @dragenter.stop.prevent
-      @dragover.stop.prevent
-      ref="dot"
-    >
+    <div class="progress" 
+      :style="{width: ismove ? `${dragWidth}px` : `${proWidth}px`}">
+      <span class="dot" 
+        :style="{transform: ismove ? `translateX(${dragWidth}px) translateY(-50%)` : `translateX(${proWidth}px) translateY(-50%)`}" 
+        @mousedown="moveInit"
+        ref="dot"
+      >
       <span class="circle"></span>
     </span>
+    </div>
+    
   </div>
 </template>
 
@@ -56,30 +57,28 @@ export default {
       this.flag = false
       document.addEventListener('mousemove', this.moveHandler, false)
       document.addEventListener('mouseup', this.upHandler, false)
+      document.addEventListener('dragenter', e => {
+        e.preventDefault()
+      })
+      document.addEventListener('dragover', e => {
+        e.preventDefault()
+        document.removeEventListener('mousemove', this.moveHandler, false)
+        document.removeEventListener('mouseup', this.upHandler, false)
+        this.ismove = false
+        this.$emit('move', this.dragWidth)
+      })
     },
-    /*move(e) {
-      let moveWidth = e.clientX - this.$refs.progress.offsetLeft
-      if (moveWidth < 0) return this.$emit('move', 0)
-      if (moveWidth > this.width) return this.$emit('move', this.width)
-      return this.$emit('move', moveWidth)
-    },*/
     moveHandler(e) {
       if (this.flag) {
         document.removeEventListener('mousemove', this.moveHandler, false) 
-        console.log(22222)
         return
       }
       this.ismove = true
       let moveWidth = this.$refs.progress && e.clientX - this.$refs.progress.offsetLeft
-        console.log(moveWidth)
 
-      if (moveWidth < 0) {
-        this.dragWidth = 0
-      } else if (moveWidth > this.width) {
-        this.dragWidth = this.width
-      } else {
-        this.dragWidth = moveWidth
-      }
+      if (moveWidth < 0) return this.dragWidth = 0
+      if (moveWidth > this.width) return this.dragWidth = this.width
+      return this.dragWidth = moveWidth
     },
     upHandler(e) {
       console.log(1)
@@ -87,6 +86,7 @@ export default {
       this.flag = true
       document.removeEventListener('mousemove', this.moveHandler, false)
       document.removeEventListener('mouseup', this.upHandler, false)
+      this.$emit('move', this.dragWidth)
     },
     skip(e) {
       let skipWidth = e.clientX - this.$refs.progress.offsetLeft
