@@ -32,6 +32,7 @@
       border: 1px solid #cdcdcd;
       border-radius: 50%;
       cursor: pointer;
+      user-select: all;
       &:hover {
         box-shadow: 0 0 5px #bbb;
       }

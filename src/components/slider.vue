@@ -3,14 +3,16 @@
     @mousedown="skip"
     ref="progress"
     :style="{width: `${width}px`}">
-    <div class="progress" :style="{width: `${proWidth}px`}"></div>
-    <div class="dot" 
-      :style="{left: `${proWidth - 7.5}px`}" 
+    <div class="progress" :style="{width: ismove ? `${dragWidth}px` : `${proWidth}px`}"></div>
+    <span class="dot" 
+      :style="{transform: ismove ? `translateX(${dragWidth}px) translateY(-50%)` : `translateX(${proWidth}px) translateY(-50%)`}" 
       @mousedown="moveInit"
+      @dragenter.stop.prevent
+      @dragover.stop.prevent
       ref="dot"
     >
       <span class="circle"></span>
-    </div>
+    </span>
   </div>
 </template>
 
@@ -39,7 +41,9 @@ export default {
   data() {
     return {
       curValue: this.value,
-      flag: false
+      flag: false,
+      ismove: false,
+      dragWidth: 0
     }
   },
   computed: {
@@ -65,19 +69,21 @@ export default {
         console.log(22222)
         return
       }
+      this.ismove = true
       let moveWidth = this.$refs.progress && e.clientX - this.$refs.progress.offsetLeft
         console.log(moveWidth)
 
       if (moveWidth < 0) {
-        this.curValue = 0
+        this.dragWidth = 0
       } else if (moveWidth > this.width) {
-        this.curValue = this.totalVal
+        this.dragWidth = this.width
       } else {
-        this.curValue = this.moveWidth
+        this.dragWidth = moveWidth
       }
     },
     upHandler(e) {
       console.log(1)
+      this.ismove = false
       this.flag = true
       document.removeEventListener('mousemove', this.moveHandler, false)
       document.removeEventListener('mouseup', this.upHandler, false)
