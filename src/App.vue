@@ -9,6 +9,7 @@
 <script>
 import vHead from './components/public/head.vue'
 import vFooter from './components/public/footer.vue'
+import storage from './storage.js'
 
 export default {
   name: 'app',
@@ -16,6 +17,7 @@ export default {
     vHead,
     vFooter
   }
+
 }
 </script>
 

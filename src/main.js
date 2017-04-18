@@ -13,10 +13,40 @@ Vue.use(VueAxios, axios)
 
 Vue.use(Vuex)
 
+
+const store = new Vuex.Store({
+  state: {
+    musicList: [{}],
+    theme: 'red',
+    isPlaying: false
+  },
+  mutations: {
+    setMusicList: (state, playload) => {
+      state.musicList = playload
+    },
+    play: state => {
+      state.isPlaying = true
+    },
+    pause: state => {
+      state.isPlaying = false
+    } 
+  },
+  actions: {
+    getInitData() {
+      return new Promise((resolve, reject) => {
+        Vue.axios.get('/music-data')
+          .then(res => {
+            resolve(res.data.musicData)
+          })
+      })
+    }
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

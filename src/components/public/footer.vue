@@ -1,17 +1,18 @@
 <template>
-  <div class="music-footer">
+  <div class="music-footer" ref="footer">
     <audio autoplay controls
       :src="url"
       v-show="false"
-      ref="audio"></audio>
+      ref="audio"
+      @ended="next(false)"></audio>
       <div class="footer-left">
-        <span class="back">
+        <span class="back" @click="prev">
           <i class="fa fa-step-backward"></i>
         </span>
-        <span class="play-pause">
-          <i class="fa fa-play"></i>
+        <span class="play-pause" @click="playOrPause">
+          <i class="fa" :class="isPlaying ? 'fa-pause' : 'fa-play'"></i>
         </span>
-        <span class="next">
+        <span class="next" @click="next(true)">
           <i class="fa fa-step-forward"></i>
         </span>
       </div>
@@ -37,10 +38,32 @@
       >
         <i class="fa fa-fw" :class="playState"></i>
       </span>
-      <span class="list-num">
+      <span class="list-num" @click="showDialog = !showDialog">
         <span class="list-icon"><i class="fa fa-file-text-o fa-fw"></i></span>
-        {{listLength}}
+        {{musicList.length}}
       </span>
+      <div class="list-dialog" v-if="showDialog">
+        <div class="list-head">
+          <span>播放列表</span>
+          <span @click="showDialog = false"><i class="fa fa-close"></i></span>
+        </div>
+        <div class="info">
+          <span>总{{musicList.length}}首</span>
+          <span>
+            <i class="fa fa-trash-o"></i>清空
+          </span>
+        </div>
+        <ul v-if="musicList.length !== 10">
+          <li v-for="item in musicList">
+            <span class="name">{{item.name}}</span>
+            <span class="singer">{{item.singer}}</span>
+          </li>
+        </ul>
+        <div class="no-song" v-else>
+          <p>你还没有添加任何歌曲!</p>
+          <p>去首页<span>发现音乐</span></p>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -70,16 +93,24 @@ import vSlider from '../slider.vue'
         saveVolume: 1,
         playStateAll: ['loop', 'loopOne', 'random', 'order'],
         playStateIndex: 0,
-        listLength: 0
+        nowPlayIndex: 0,
+        showDialog: false
       }
     },
     created() {
-      this.axios.get('http://localhost:3000/music/url?id=26075648').then(response => {
-        this.url = response.data.data[0].url
-      })
+      this.$store.dispatch('getInitData')
+      .then(data => this.$store.commit('setMusicList', data))
+      .then(() => {
+        this.axios.get(`http://localhost:3000/music/url?id=${this.musicList[0].id}`)
+          .then(response => {
+            this.url = response.data.data[0].url
+            this.nowPlayIndex = 0
+          })
+      }) 
     },
     mounted() {
       this.$refs.audio.addEventListener('play', () => {
+        this.$store.commit('play')
         this.tolTimeNum = this.$refs.audio && this.$refs.audio.duration
         this.tolTime = this.$refs.audio && this.formatTime(this.$refs.audio.duration)
 
@@ -87,6 +118,21 @@ import vSlider from '../slider.vue'
           this.curTimeNum = this.$refs.audio && this.$refs.audio.currentTime
           this.curTime = this.$refs.audio && this.formatTime(this.$refs.audio.currentTime)
         }, 990)
+      }, false)
+
+      this.$refs.audio.addEventListener('pause', () => {
+        this.$store.commit('pause')
+        clearInterval(this.timer)
+      })
+
+      document.addEventListener('click', e => {
+        let eles = this.$refs.footer.getElementsByTagName('*')
+        for (let i = 0, length = eles.length; i < length; i++) {
+          if (e.target === eles[i]) {
+            return
+          }
+        }
+        this.showDialog = false
       }, false)
     },
     computed: {
@@ -99,6 +145,12 @@ import vSlider from '../slider.vue'
         }
         let {[this.playStateAll[this.playStateIndex]]: bg} = obj
         return bg
+      },
+      musicList() {
+        return this.$store.state.musicList.musicData
+      },
+      isPlaying() {
+        return this.$store.state.isPlaying
       }
     },
     methods: {
@@ -123,11 +175,13 @@ import vSlider from '../slider.vue'
           this.$refs.audio.volume = 0
           this.volume = 0
           this.saveVolume = 0
+          this.isVolumeOff = true
           return 
         }
-        this.$refs.audio.volume = skipWidth / 100 * 1
+        this.$refs.audio.volume = skipWidth / 100 * 1 > 0 ? skipWidth / 100 * 1 : 0
         this.volume = this.$refs.audio.volume
         this.saveVolume = this.volume
+        this.isVolumeOff = false
       },
       volumeOff() {
         this.isVolumeOff = !this.isVolumeOff
@@ -153,11 +207,55 @@ import vSlider from '../slider.vue'
           this.$refs.audio.volume = 0
           this.volume = 0
           this.saveVolume = this.volume
+          this.isVolumeOff = true
           return
         } 
-        this.$refs.audio.volume = value / 100 * 1
+        this.$refs.audio.volume = value / 100 * 1 > 0 ? value / 100 * 1 : 0
         this.volume = this.$refs.audio.volume
         this.saveVolume = this.volume
+        this.isVolumeOff = false
+      },
+      next(flag) {
+        if (this.playStateIndex === 0) {
+          this.nowPlayIndex = this.nowPlayIndex === this.musicList.length - 1 ? 0 : ++this.nowPlayIndex
+          this.getURL(this.musicList[this.nowPlayIndex].id)
+          return 
+        }
+        if (this.playStateIndex === 1) {
+          if (!flag) return this.$refs.audio.load()
+          this.nowPlayIndex = this.nowPlayIndex === this.musicList.length - 1 ? 0 : ++this.nowPlayIndex
+          this.getURL(this.musicList[this.nowPlayIndex].id)
+        }
+        if (this.playStateIndex === 2) {
+          this.nowPlayIndex = Math.floor(Math.random() * this.musicList.length)
+          this.getURL(this.musicList[this.nowPlayIndex].id)
+          return
+        }
+        if (this.playStateIndex === 3) {
+          if (this.nowPlayIndex === this.musicList.length - 1 && !flag) {
+            return
+          }
+          this.nowPlayIndex = this.nowPlayIndex === this.musicList.length - 1 ? 0 : ++this.nowPlayIndex
+          this.getURL(this.musicList[this.nowPlayIndex].id)
+          return 
+        }
+      },
+      prev() {
+        this.nowPlayIndex = this.nowPlayIndex === 0 ? this.musicList.length - 1 : --this.nowPlayIndex
+        this.getURL(this.musicList[this.nowPlayIndex].id)
+      },
+      getURL(id) {
+        this.axios.get(`http://localhost:3000/music/url?id=${id}`)
+        .then(res => this.url = res.data.data[0].url)
+      },
+      playOrPause() {
+        if (this.isPlaying === true) {
+          this.$store.commit('pause')
+          this.$refs.audio.pause()
+          return
+        }
+        this.$store.commit('play')
+        this.$refs.audio.play()
       }
     }
   }

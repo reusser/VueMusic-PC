@@ -65,7 +65,6 @@ export default {
         document.removeEventListener('mousemove', this.moveHandler, false)
         document.removeEventListener('mouseup', this.upHandler, false)
         this.ismove = false
-        this.$emit('move', this.dragWidth)
       })
     },
     moveHandler(e) {
@@ -81,7 +80,6 @@ export default {
       return this.dragWidth = moveWidth
     },
     upHandler(e) {
-      console.log(1)
       this.ismove = false
       this.flag = true
       document.removeEventListener('mousemove', this.moveHandler, false)

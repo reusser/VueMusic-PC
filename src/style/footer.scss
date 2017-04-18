@@ -89,7 +89,10 @@
     color: #686868;
   }
   .list-num {
-    position: relative;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
     display: inline-block;
     width: 4rem;
     height: 2rem;
@@ -104,6 +107,105 @@
     cursor: pointer;
     &:hover .fa-file-text-o {
       color: #4f4f4f;
+    }
+  }
+  .list-dialog {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(-100%);
+    width: 55rem;
+    height: 60rem;
+    background-color: #fff;
+    border: 2px solid #cac8ca;
+    box-shadow: 0 0 5px #aaa;
+    overflow: auto;
+    .list-head {
+      position: relative;
+      height: 4rem;
+      text-align: center;
+      line-height: 4rem;
+      background-color: #f5f5f7;
+      > span:first-child {
+        display: inline-block;
+        height: 2.5rem;
+        width: 10rem;
+        font-family: "SimSun";
+        text-align: center;
+        line-height: 2.5rem;
+        vertical-align: middle;
+        color: #fff;
+        border-radius: 4px;
+        background-color: #7c7d85;
+      }
+      > span:last-child {
+        position: absolute;
+        right: 2rem;
+        color: #6d6d6d;
+        cursor: pointer;
+      }
+    }
+    .info {
+      height: 2.8rem;
+      font-size: 1.3rem;
+      color: #7c7c7c;
+      line-height: 2.8rem;
+      background-color: #f9f9f9;
+      .fa {
+        font-size: 1.6rem;
+      }
+      > span:first-child {
+          display: inline-block;
+          box-sizing: border-box;
+          width: 40rem;
+          padding-left: 5rem;
+          text-align: left;
+        }
+        > span:last-child {
+          display: inline-block;
+          width: 10rem;
+          text-align: left;
+        }
+      > span:last-child:hover {
+        cursor: pointer;
+        color: #565656;
+      }
+    }
+    ul {
+      li {
+        height: 2.8rem;
+        font-size: 1.3rem;
+        line-height: 2.8rem;
+        background-color: #fafafa;
+        &:hover {
+          background-color: #ecedee;
+        }
+        .name {
+          display: inline-block;
+          box-sizing: border-box;
+          width: 40rem;
+          padding-left: 5rem;
+          text-align: left;
+        }
+        .singer {
+          display: inline-block;
+          width: 10rem;
+          text-align: left;
+        }
+      }
+      li:nth-child(even) {
+        background-color: #f5f5f7;
+      }
+    }
+    .no-song {
+      margin-top: 20rem;
+      text-align: center;
+      line-height: normal;
+      color: #b0b0b0;
+      span {
+        color: #000;
+        text-decoration: underline;
+      }
     }
   }
 }
