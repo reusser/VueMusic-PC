@@ -16,9 +16,10 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    musicList: [{}],
+    musicList: {'musicData':[]},
     theme: 'red',
-    isPlaying: false
+    isPlaying: false,
+    nowPlayIndex: 0
   },
   mutations: {
     setMusicList: (state, playload) => {
@@ -29,6 +30,12 @@ const store = new Vuex.Store({
     },
     pause: state => {
       state.isPlaying = false
+    },
+    clear: state => {
+      state.musicList = {'musicData':[]}
+    },
+    setPlayIndex: (state, playload) => {
+      state.nowPlayIndex = playload
     } 
   },
   actions: {

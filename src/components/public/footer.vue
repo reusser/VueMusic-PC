@@ -40,7 +40,7 @@
       </span>
       <span class="list-num" @click="showDialog = !showDialog">
         <span class="list-icon"><i class="fa fa-file-text-o fa-fw"></i></span>
-        {{musicList.length}}
+        {{musicList && musicList.length}}
       </span>
       <div class="list-dialog" v-if="showDialog">
         <div class="list-head">
@@ -48,13 +48,17 @@
           <span @click="showDialog = false"><i class="fa fa-close"></i></span>
         </div>
         <div class="info">
-          <span>总{{musicList.length}}首</span>
-          <span>
+          <span>总{{musicList && musicList.length}}首</span>
+          <span 
+            @click="$store.commit('clear');
+                    url = '';
+                    $store.commit('pause');
+                ">
             <i class="fa fa-trash-o"></i>清空
           </span>
         </div>
-        <ul v-if="musicList.length !== 10">
-          <li v-for="item in musicList">
+        <ul v-if="musicList && musicList.length !== 0">
+          <li v-for="(item, index) in musicList" @dblclick="changeMusic(index)">
             <span class="name">{{item.name}}</span>
             <span class="singer">{{item.singer}}</span>
           </li>
@@ -93,7 +97,6 @@ import vSlider from '../slider.vue'
         saveVolume: 1,
         playStateAll: ['loop', 'loopOne', 'random', 'order'],
         playStateIndex: 0,
-        nowPlayIndex: 0,
         showDialog: false
       }
     },
@@ -104,7 +107,7 @@ import vSlider from '../slider.vue'
         this.axios.get(`http://localhost:3000/music/url?id=${this.musicList[0].id}`)
           .then(response => {
             this.url = response.data.data[0].url
-            this.nowPlayIndex = 0
+            this.$store.commit('setPlayIndex', 0)
           })
       }) 
     },
@@ -126,9 +129,9 @@ import vSlider from '../slider.vue'
       })
 
       document.addEventListener('click', e => {
-        let eles = this.$refs.footer.getElementsByTagName('*')
+        let eles = this.$refs.footer && this.$refs.footer.getElementsByTagName('*')
         for (let i = 0, length = eles.length; i < length; i++) {
-          if (e.target === eles[i]) {
+          if (e.target === eles[i] || e.target === this.$refs.footer) {
             return
           }
         }
@@ -151,6 +154,9 @@ import vSlider from '../slider.vue'
       },
       isPlaying() {
         return this.$store.state.isPlaying
+      },
+      nowPlayIndex() {
+        return this.$store.state.nowPlayIndex
       }
     },
     methods: {
@@ -216,18 +222,19 @@ import vSlider from '../slider.vue'
         this.isVolumeOff = false
       },
       next(flag) {
+        if (this.musicList.length === 0) return 
         if (this.playStateIndex === 0) {
-          this.nowPlayIndex = this.nowPlayIndex === this.musicList.length - 1 ? 0 : ++this.nowPlayIndex
+          this.nowPlayIndex === this.musicList.length - 1 ? this.$store.commit('setPlayIndex', 0) : this.$store.commit('setPlayIndex', ++this.nowPlayIndex)
           this.getURL(this.musicList[this.nowPlayIndex].id)
           return 
         }
         if (this.playStateIndex === 1) {
           if (!flag) return this.$refs.audio.load()
-          this.nowPlayIndex = this.nowPlayIndex === this.musicList.length - 1 ? 0 : ++this.nowPlayIndex
+          this.nowPlayIndex === this.musicList.length - 1 ? this.$store.commit('setPlayIndex', 0) : this.$store.commit('setPlayIndex', ++this.nowPlayIndex)
           this.getURL(this.musicList[this.nowPlayIndex].id)
         }
         if (this.playStateIndex === 2) {
-          this.nowPlayIndex = Math.floor(Math.random() * this.musicList.length)
+          this.$store.commit('setPlayIndex', Math.floor(Math.random() * this.musicList.length))
           this.getURL(this.musicList[this.nowPlayIndex].id)
           return
         }
@@ -235,13 +242,14 @@ import vSlider from '../slider.vue'
           if (this.nowPlayIndex === this.musicList.length - 1 && !flag) {
             return
           }
-          this.nowPlayIndex = this.nowPlayIndex === this.musicList.length - 1 ? 0 : ++this.nowPlayIndex
+          this.nowPlayIndex === this.musicList.length - 1 ? this.$store.commit('setPlayIndex', 0) : this.$store.commit('setPlayIndex', ++this.nowPlayIndex)
           this.getURL(this.musicList[this.nowPlayIndex].id)
           return 
         }
       },
       prev() {
-        this.nowPlayIndex = this.nowPlayIndex === 0 ? this.musicList.length - 1 : --this.nowPlayIndex
+        if (this.musicList.length === 0) return 
+        this.nowPlayIndex === 0 ? this.$store.commit('setPlayIndex', this.musicList.length - 1) : this.$store.commit('setPlayIndex', --this.nowPlayIndex)
         this.getURL(this.musicList[this.nowPlayIndex].id)
       },
       getURL(id) {
@@ -256,6 +264,10 @@ import vSlider from '../slider.vue'
         }
         this.$store.commit('play')
         this.$refs.audio.play()
+      },
+      changeMusic(index) {
+        this.$store.commit('setPlayIndex', index)
+        this.getURL(this.musicList[this.nowPlayIndex].id)
       }
     }
   }

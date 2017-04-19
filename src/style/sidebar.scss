@@ -1,0 +1,63 @@
+.sidebar {
+  position: absolute;
+  top: 5rem;
+  bottom: 4.6rem;
+  width: 20rem;
+  border-right: 1px solid #e1e1e2;
+  background-color: #f5f5f7;
+  .sidebar-list {
+    height: 90%;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: #e1e1e2;
+    }
+  }
+  .sidebar-head {
+    position: relative;
+    padding-left: 1rem;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    font-size: 1.3rem;
+    text-align: left;
+    color: #898989;
+    cursor: pointer;
+    .fa {
+      margin-left: 10rem;
+      font-size: 1.8rem;
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+  ul {
+    li {
+      box-sizing: border-box;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      height: 3rem;
+      padding-left: 2rem;
+      font-size: 1.3rem;
+      line-height: 3rem;
+      color: #5e5e5e;
+      vertical-align: middle;
+      cursor: pointer;
+      &:hover {
+        color: #000;
+      }
+      .fa {
+        font-size: 1.8rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+  .preview {
+    height: 10%;
+    border-top: 1px solid #e1e1e2;
+  }
+}
