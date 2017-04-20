@@ -1,0 +1,11 @@
+.banner-container {
+  position: relative;
+  width: 100rem;
+  height: 25rem;
+  margin: 1rem auto;
+  background-color: #000;
+  .img-container {
+    height: 90%;
+    background-color: #aaa;
+  }
+}

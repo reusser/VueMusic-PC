@@ -16,4 +16,12 @@ body {
   height: 100%;
   overflow: auto;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  .router-view {
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    bottom: 4.6rem;
+    left: 20rem;
+    overflow-y: auto;
+  }
 }
