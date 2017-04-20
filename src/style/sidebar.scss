@@ -57,7 +57,69 @@
     }
   }
   .preview {
+    position: relative;
     height: 10%;
     border-top: 1px solid #e1e1e2;
+    &:hover .shadow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .musicImg,
+    .shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 6.5rem;
+      cursor: pointer;
+    }
+    .shadow {
+      display: none;
+      text-align: center;
+      font-size: 3rem;
+      color: #ddd;
+      background: rgba(0, 0, 0, .3);
+    }
+    .info {
+      display: flex;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100%;
+      width: 12rem;
+      flex-direction: column;
+      justify-content: center;
+      color: #474747;
+      > div {
+        display: flex;
+        box-sizing: border-box;
+        width: 12rem;
+        padding-right: 1rem;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        > span {
+          display: inline-block;
+          width: 10rem;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          vertical-align: middle;
+          cursor: pointer;
+        }
+        .singer {
+          font-size: 1.2rem;
+        }
+        .fa {
+          color: #a8a8a8;
+          cursor: pointer;
+        }
+        .fa-heart {
+          color: #e83c3c;
+        }
+      }
+    }
   }
 }

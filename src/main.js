@@ -19,7 +19,8 @@ const store = new Vuex.Store({
     musicList: {'musicData':[]},
     theme: 'red',
     isPlaying: false,
-    nowPlayIndex: 0
+    nowPlayIndex: 0,
+    showMiniAudio: true
   },
   mutations: {
     setMusicList: (state, playload) => {
@@ -27,6 +28,7 @@ const store = new Vuex.Store({
     },
     play: state => {
       state.isPlaying = true
+
     },
     pause: state => {
       state.isPlaying = false
@@ -36,6 +38,9 @@ const store = new Vuex.Store({
     },
     setPlayIndex: (state, playload) => {
       state.nowPlayIndex = playload
+    },
+    setShowMiniAudio: (state, playload) => {
+      state.showMiniAudio = playload
     } 
   },
   actions: {

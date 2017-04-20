@@ -157,6 +157,9 @@ import vSlider from '../slider.vue'
       },
       nowPlayIndex() {
         return this.$store.state.nowPlayIndex
+      },
+      showMiniAudio() {
+        return this.musicList.length > 0
       }
     },
     methods: {
@@ -268,6 +271,13 @@ import vSlider from '../slider.vue'
       changeMusic(index) {
         this.$store.commit('setPlayIndex', index)
         this.getURL(this.musicList[this.nowPlayIndex].id)
+      }
+    },
+    watch: {
+      showMiniAudio: {
+        handler(newVal) {
+          this.$store.commit('setShowMiniAudio', newVal)
+        }
       }
     }
   }

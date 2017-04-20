@@ -37,8 +37,21 @@
         <li><i class="fa fa-file-audio-o fa-fw"></i>2016年五月最新热歌TOP50</li>
       </ul>
     </div> 
-    <div class="preview">
-      <img :src="imgUrl">
+    <div class="preview" v-if="showMiniAudio">
+      <img :src="imgUrl" class="musicImg">
+      <div class="shadow">
+        <i class="fa fa-expand"></i>
+      </div>
+      <div class="info">
+        <div>
+          <span class="song-name">{{songName}}</span><i class="fa" 
+            :class="isLike ? 'fa-heart' : 'fa-heart-o'"
+            @click="isLike = !isLike"></i>
+        </div>
+        <div>
+          <span class="singer">{{singer}}</span><i class="fa fa-share-square-o"></i>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -55,24 +68,41 @@ export default {
     return {
       isToggleCreateList: false,
       isToggleCollectList: false,
-      imgUrl: ''
+      imgUrl: '',
+      isLike: false
     }
   },
   mounted() {
     this.axios.get(`http://localhost:3000/search?keywords=${this.songName}`)
     .then(res => {
-      console.log(res.data)
-      this.imgUrl = res.data.result.songs[0].artists[0].img1v1Url
+      this.imgUrl = res.data.result && res.data.result.songs[0].album.blurPicUrl
     })
   },
   computed: {
     songName() {
-      return this.$store.state.musicList ? this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex].name : ''
+      return this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex] ? this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex].name : ''
+    },
+    singer() {
+      return this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex] ? this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex].singer : ''
+    },
+    showMiniAudio() {
+      return this.$store.state.showMiniAudio
+    }
+  },
+  watch: {
+    songName: {
+      handler(newVal) {
+        this.axios.get(`http://localhost:3000/search?keywords=${newVal}`)
+        .then(res => {
+        console.log(res.data)
+        this.imgUrl = res.data.result.songs[0].album.blurPicUrl
+        })
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/sidebar'
+@import '../../style/sidebar';
 </style>
