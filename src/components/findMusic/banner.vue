@@ -212,7 +212,7 @@ export default {
       }
       setTimeout(() => {
         this.isSkip = false
-      }, 600)
+      }, 100)
     }
   }
 }
