@@ -75,13 +75,13 @@
       transition: none;
     }
     .skip-left {
-      transform: translateX(-110%) scale(.7, .7) translateY(5%);
+      transform: translateX(-80%) scale(.7, .7) translateY(5%);
     }
     .skip-center {
       transform: translateX(-50%) scale(.8, .8);
     }
     .skip-right {
-      transform: translateX(10%) scale(.7, .7) translateY(5%);
+      transform: translateX(-20%) scale(.7, .7) translateY(5%);
     }
   }
   .prev-btn,
