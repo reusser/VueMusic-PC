@@ -2,10 +2,126 @@
   position: relative;
   width: 100rem;
   height: 25rem;
-  margin: 1rem auto;
-  background-color: #000;
+  margin: 2rem auto;
   .img-container {
+    position: relative;
     height: 90%;
-    background-color: #aaa;
+    cursor: pointer;
+    &:hover {
+      .prev-btn,
+      .post-btn {
+        display: block;
+      }
+    }
+    ul {
+      list-style: none;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    li {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 50rem;
+      height: 100%;
+      transform: translateX(-50%);
+      transition: all .4s;
+    }
+    .left {
+      transform: translateX(-110%) scale(.9, .9) translateY(5%);
+      z-index: 2;
+      &:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .5);
+      }
+    }
+    .center {
+      position: absolute;
+      left: 50%;
+      width: 50rem;
+      height: 100%;
+      transform: translateX(-50%) scale(1, 1);
+      z-index: 3;
+    }
+    .right {
+      transform: translateX(10%) scale(.9, .9) translateY(5%);
+      z-index: 1;
+      &:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .5);
+      }
+    }
+    .right.is-prev {
+      z-index: 2
+    }
+    .left.is-prev {
+      z-index: 1
+    }
+    .skip-left,
+    .skip-center,
+    .skip-right {
+      transition: transform .1s;
+    }
+    .skip-left {
+      transform: translateX(-110%) scale(.5, .5) translateY(5%);
+    }
+    .skip-center {
+      transform: translateX(-50%) scale(.7, .7);
+    }
+    .skip-right {
+      transform: translateX(10%) scale(.5, .5) translateY(5%);
+    }
+  }
+  .prev-btn,
+  .post-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    z-index: 999;
+    font-size: 1.8rem;
+    color: #7d7e80;
+    &:hover {
+      color: #e0e0e1;
+    }
+  }
+  .prev-btn {
+    left: 0;
+  }
+  .post-btn {
+    right: 0;
+  }
+  .dot-list {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    .dot {
+      width: 1.8rem;
+      height: 3px;
+      background-color: #c4c4c4;
+      margin-left: .25rem;
+      margin-right: .25rem;
+      cursor: pointer;
+    }
+    .active {
+      background-color: #c62f2f;
+    }
   }
 }
