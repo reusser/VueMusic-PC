@@ -3,6 +3,16 @@
     left: 3rem;
     right: 3rem;
   }
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: #e1e1e2;
+      &:hover {
+        background-color: #cfcfd1;
+      }
+    }
   .find-music-nav {
     height: 4rem;
     text-align: center;
@@ -23,6 +33,164 @@
     .active {
       color: #c62f2f;
       border-bottom: 3px solid #c62f2f;
+    }
+  }
+  .recommend-list {
+    > p {
+      width: 105rem;
+      margin: 1rem auto;
+      padding-top: 1px;
+      padding-bottom: 10px;
+      font-size: 2rem;
+      color: #474747;
+      border-bottom: 2px solid #e4e4e4;
+    }
+    ul {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      width: 105rem;
+      margin: 0 auto;
+      list-style: none;
+      .day-commend {
+        .content {
+          position: relative;
+          height: 19rem;
+          margin-bottom: .5rem;
+          text-align: center;
+          background-color: #fff;
+          border: 2px solid #e4e4e4;
+          cursor: pointer;
+          > div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+          }
+        }
+        .week {
+          font-size: 2rem;
+          color: #6c6c6c;
+        }
+        .day {
+          font-size: 8rem;
+          color: #c62f2f;
+        }
+        .copywrite {
+          line-height: 3.2rem;
+          z-index: 2;
+        }
+        .show-copywrite {
+          transform: translateY(0);
+        }
+      }
+      li {
+        position: relative;
+        width: 19rem;
+        height: 24rem;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        .item-img {
+          position: relative;
+          height: 19rem;
+          margin-bottom: .5rem;
+          border: 2px solid #e4e4e4;
+          cursor: pointer;
+        }
+        .copywrite {
+          position: absolute;
+          width: 17rem;
+          height: 3.2rem;
+          padding: .5rem 1rem;
+          transform: translateY(-110%);
+          transition: transform .2s;
+          color: #eee;
+          font-size: 1.2rem;
+          background: rgba(0, 0, 0, .4);
+          z-index: 2;
+          cursor: pointer;
+          > div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 17rem;
+            transform: translateY(-50%) translateX(-50%);
+            overflow:hidden; 
+            text-overflow:ellipsis;
+            display:-webkit-box; 
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:2;     
+          }
+        }
+        .show-copywrite {
+          transform: translateY(0);
+        }
+      }
+      .play-btn {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        transform: rotateZ(-90deg);
+        background: rgba(80, 80, 80, .5);
+        display: none;
+        &:hover {
+          background: rgba(0, 0, 0, .6);
+        }
+        &:before {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translateY(-20%) translateX(-50%);
+          content: '';
+          width: 0;
+          height: 0;
+          border: 6px solid transparent;
+          border-top: 6px solid #fff;
+        }
+      }
+      .show-play {
+        display: block;
+      }
+      .dec {
+        font-size: 1.3rem;
+        color: #555;
+        span {
+          &:hover {
+            cursor: pointer;
+            color: #000;
+          }
+        }
+      }
+      .listen-num {
+        position: absolute;
+        right: .1rem;
+        top: 0;
+        width: 8rem;
+        padding: .2rem 1rem;
+        color: #eee;
+        font-size: 13px;
+        text-align: right;
+        z-index: 3;
+        background-image: -webkit-linear-gradient(
+          to right, 
+          rgba(255, 255, 255, .5), 
+          rgba(80, 80, 80, .5)
+        );
+        background-image: linear-gradient(to right, 
+          rgba(255, 255, 255, 0), 
+          rgba(100, 100, 100, .5));
+        .fa {
+          margin-right: .5rem;
+          font-size: 14px;
+        }
+      }
+      .hide-listen-num {
+        display: none;
+      }
     }
   }
 }

@@ -10,8 +10,8 @@
       </label>
     <div class="right">
       <div class="settings">
-        <img src="http://on99ebnkk.bkt.clouddn.com/head.jpg">
-        <span id="username">{{usernameHandler(10)}}</span>
+        <img :src="user.avatarUrl">
+        <span id="username">{{user.nickname && usernameHandler(10)}}</span>
         <i class="fa fa-yelp" id="yelp"></i>
         <i class="fa fa-envelope-o"></i>
         <i class="fa fa-cog"></i>
@@ -30,9 +30,9 @@
           <div class="user-option"
           v-if="showOption">
             <div class="avatar">
-              <img src="http://on99ebnkk.bkt.clouddn.com/head.jpg">
-              <span class="avatar-name">{{usernameHandler(8)}}</span>
-              <span class="sign">签到</span>
+              <img :src="user.avatarUrl">
+              <span class="avatar-name">{{user.nickname && usernameHandler(8)}}</span>
+              <span class="sign" @click="sign">签到</span>
             </div>
             <ul class="social">
               <li>
@@ -68,7 +68,10 @@
               <li><i class="fa fa-usb fa-fw"></i><span>导入歌单</span>
                 <span><span class="gt">&gt;</span></span> 
               </li>
-              <li><i class="fa fa-power-off fa-fw"></i><span>退出登录</span>
+              <li v-if="user.isLogin" @click="signOut"><i class="fa fa-power-off fa-fw"></i><span>退出登录</span>
+                <span><span class="gt">&gt;</span></span>      
+              </li>
+              <li v-if="!user.isLogin" @click="signIn"><i class="fa fa-sign-in fa-fw"></i><span>登录</span>
                 <span><span class="gt">&gt;</span></span>      
               </li>
             </ul>
@@ -96,6 +99,7 @@
 </template>
 
 <script>
+import storage from '../../storage.js'
 /**
  * A module define public head component
  * @exports vHead
@@ -105,15 +109,25 @@ export default {
   name: 'vHead',
   data() {
     return {
-      username: 'oyh(未登录)',
       searchText: '',
       isActive: false,
       placeholder: '搜索音乐，歌手，歌词，用户',
       showOption: false,
-      showTheme: false
+      showTheme: false,
+      user: {}
     }
   },
   mounted() {
+    if (storage.getUser() !== null) {
+      this.user = storage.getUser()
+    } else {
+      storage.saveUser({
+        isLogin: false,
+        nickname: 'oyh(未登录)',
+        avatarUrl: 'http://on99ebnkk.bkt.clouddn.com/head.jpg'
+      })
+      this.user = storage.getUser()
+    }
     document.addEventListener('click', e => {
       if (e.target.id === 'username') {
         this.showOption = !this.showOption
@@ -140,7 +154,7 @@ export default {
   },
   methods: {
     usernameHandler(num) {
-      return this.username.length >= num ? `${this.username.slice(0, num - 1)}...` : this.username
+      return this.user.nickname.length >= num ? `${this.user.nickname.slice(0, num - 1)}...` : this.user.nickname
     },
     searchFocus() {
       this.isActive = true
@@ -149,6 +163,22 @@ export default {
     searchBlur() {
       this.isActive = false
       this.placeholder = '搜索音乐，歌手，歌词，用户'
+    },
+    sign() {
+      if (this.isLogin === false) {
+        //弹出登录框
+      } else {
+        //执行签到
+      }
+    },
+    signOut() {
+      this.user.isLogin = false
+      this.user.nickname = 'oyh(未登录)'
+      this.user.avatarUrl = 'http://on99ebnkk.bkt.clouddn.com/head.jpg'
+      storage.saveUser(this.user)
+    },
+    signIn() {
+      this.user.isLogin = true
     }
   }
 }

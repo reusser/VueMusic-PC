@@ -16,11 +16,12 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    musicList: {'musicData':[]},
+    musicList: {'musicData': []},
     theme: 'red',
     isPlaying: false,
     nowPlayIndex: 0,
-    showMiniAudio: true
+    showMiniAudio: true,
+    commendList: {'commendList': []}
   },
   mutations: {
     setMusicList: (state, playload) => {
@@ -41,6 +42,9 @@ const store = new Vuex.Store({
     },
     setShowMiniAudio: (state, playload) => {
       state.showMiniAudio = playload
+    },
+    setCommendList: (state, playload) => {
+      state.commendList = playload
     } 
   },
   actions: {
@@ -49,6 +53,14 @@ const store = new Vuex.Store({
         Vue.axios.get('/music-data')
           .then(res => {
             resolve(res.data.musicData)
+          })
+      })
+    },
+    getInitCommend() {
+      return new Promise((resolve, reject) => {
+        Vue.axios.get('/commend-list')
+          .then(res => {
+            resolve(res.data.commendList)
           })
       })
     }

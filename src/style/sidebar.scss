@@ -14,6 +14,9 @@
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
       background-color: #e1e1e2;
+      &:hover {
+        background-color: #cfcfd1;
+      }
     }
   }
   .sidebar-head {

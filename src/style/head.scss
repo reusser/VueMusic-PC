@@ -130,6 +130,7 @@ $netRed: #c62f2f;
     background-color: #fafafa;
     box-shadow: 0 0 6px #aaa;
     border-radius: 3px;
+    z-index: 5;
     &.show-option {
       left: -5rem;
       &:before {

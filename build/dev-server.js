@@ -12,6 +12,7 @@ var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 var musicData = require('../music-data.json')
+var commendList = require('../commend-list.json')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -28,6 +29,9 @@ var router = express.Router()
 app.use('', router)
 router.get('/music-data', (req, res) => {
   res.json({musicData: musicData})
+})
+router.get('/commend-list', (req, res) => {
+  res.json({commendList: commendList})
 })
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

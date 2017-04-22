@@ -198,17 +198,13 @@ export default {
     skipHandler(index) {
       this.isSkip = true
       if (index < this.nowImgIndex) {
-        //setTimeout( () => {
           for (let i = 0, length = Math.abs(index - this.nowImgIndex); i < length; i++) {
             this.prevImg()
           }
-       // }, 30) 
       } else {
-        //setTimeout( () => {
           for (let i = 0, length = Math.abs(index - this.nowImgIndex); i < length; i++) {
             this.nextImg()
           }
-        //}, 30)
       }
       setTimeout(() => {
         this.isSkip = false

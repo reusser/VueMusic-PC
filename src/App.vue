@@ -20,10 +20,9 @@ export default {
     vFooter,
     vSidebar
   }
-
 }
 </script>
 
 <style lang="scss">
-@import 'style/app'
+@import 'style/app';
 </style>
