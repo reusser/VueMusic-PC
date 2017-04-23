@@ -278,6 +278,11 @@ import vSlider from '../slider.vue'
         handler(newVal) {
           this.$store.commit('setShowMiniAudio', newVal)
         }
+      },
+      curTimeNum: {
+        handler(newVal) {
+          this.$store.commit('setCurTimeNum', newVal)
+        }
       }
     }
   }

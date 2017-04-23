@@ -39,7 +39,7 @@
     </div> 
     <div class="preview" v-if="showMiniAudio">
       <img :src="imgUrl" class="musicImg">
-      <div class="shadow">
+      <div class="shadow" @click="$store.commit('setShowPlay', true)">
         <i class="fa fa-expand"></i>
       </div>
       <div class="info">
@@ -94,8 +94,7 @@ export default {
       handler(newVal) {
         this.axios.get(`http://localhost:3000/search?keywords=${newVal}`)
         .then(res => {
-        console.log(res.data)
-        this.imgUrl = res.data.result.songs[0].album.blurPicUrl
+          this.imgUrl = res.data.result.songs[0].album.blurPicUrl
         })
       }
     }

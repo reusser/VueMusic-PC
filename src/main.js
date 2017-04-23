@@ -21,7 +21,9 @@ const store = new Vuex.Store({
     isPlaying: false,
     nowPlayIndex: 0,
     showMiniAudio: true,
-    commendList: {'commendList': []}
+    commendList: {'commendList': []},
+    curTimeNum: 0,
+    showPlay: false
   },
   mutations: {
     setMusicList: (state, playload) => {
@@ -45,6 +47,12 @@ const store = new Vuex.Store({
     },
     setCommendList: (state, playload) => {
       state.commendList = playload
+    },
+    setCurTimeNum: (state, playload) => {
+      state.curTimeNum = playload
+    },
+    setShowPlay: (state, playload) => {
+      state.showPlay = playload
     } 
   },
   actions: {

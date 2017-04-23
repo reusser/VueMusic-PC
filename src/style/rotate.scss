@@ -1,0 +1,63 @@
+.rotate-container {
+  position: relative;
+  width: 33rem;
+  height: 36rem;
+  .needle {
+    position: absolute;
+    top: -6rem;
+    left: 50%;
+    width: 10rem;
+    transform: translateX(-30%) rotateZ(-10deg);
+    transform-origin: left top;
+    transition: transform .5s;
+    z-index: 2;
+  }
+  .needle.pause {
+    transform: translateX(-30%) rotateZ(-32deg);
+  }
+  .disk {
+    position: relative;
+    width: 33rem;
+    height: 33rem;
+    margin: 4rem auto;
+    background: url(http://on99ebnkk.bkt.clouddn.com/disc-ip6.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    > div {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 21rem;
+      height: 21rem;
+      border-radius: 50%;
+      background-color: #1f1f1f;
+    }
+    .song-img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 20rem;
+      height: 20rem;
+      border-radius: 50%;
+    }
+  }
+  .disk.playing {
+    animation: rotate 40s infinite linear;
+    animation-play-state: running;
+  }
+  .disk.pause {
+    animation: rotate 40s infinite linear;
+    animation-play-state: paused;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

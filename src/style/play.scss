@@ -1,0 +1,98 @@
+.play-container {
+  position: absolute;
+  top: 5rem;
+  bottom: 4.6rem;
+  width: 100%;
+  background: #fff;
+  z-index: 4;
+  transform-origin: left bottom;
+  transition: all .3s;
+  overflow-y:auto;
+  background-color: #fafafa;
+}
+.hide {
+  transform: scale(0, 0);
+}
+.show {
+  transform: scale(1, 1);
+}
+.play-box{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+.shadow {
+  width: 120rem;
+  height: 35rem;
+  margin: 0 auto;
+  filter: blur(130px);
+}
+.btn-box {
+  width: 34rem;
+  text-align: center;
+  button {
+    width: 7rem;
+    height: 3rem;
+    margin: .5rem;
+    color: #737374;
+    border: 1px solid #b2b8b7;
+    background-color: #eee;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f3f4f5;
+      .fa {
+        color: #333;
+      }
+      .fa-heart {
+        color: #c62f2f;
+      }
+    }
+    .fa {
+      margin-right: 3px;
+    }
+    .fa-heart {
+      color: #c62f2f;
+    }
+  }
+}
+.detail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 44rem;
+  right: 0;
+  border: 1px solid #000;
+  .song-name {
+    padding: {
+      top: 3rem;
+      bottom: 1rem;
+    }
+    font-size: 22px;
+    color: #292a28;
+  }
+  .song-detail {
+    font-size: 12px;
+    .album-name,
+    .singer {
+      color: #3f6bad;
+      cursor: pointer;
+      &:hover {
+        color: #0a4aab;
+      }
+    }
+    .album-name {
+      display: inline-block;
+      width: 10rem;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: top;
+    }
+  }
+}
