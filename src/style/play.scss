@@ -6,7 +6,7 @@
   background: #fff;
   z-index: 4;
   transform-origin: left bottom;
-  transition: all .3s;
+  transition: all 1s;
   overflow-y:auto;
   background-color: #fafafa;
 }
@@ -24,12 +24,12 @@
   width: 80rem;
   padding: 0 2rem;
   margin: 0 auto;
-  border: 1px solid #000;
 }
 .shadow {
   width: 120rem;
   height: 35rem;
   margin: 0 auto;
+  transform: translateX(-5%);
   filter: blur(130px);
 }
 .btn-box {
@@ -67,7 +67,6 @@
   bottom: 0;
   left: 44rem;
   right: 0;
-  border: 1px solid #000;
   .song-name {
     padding: {
       top: 3rem;

@@ -1,6 +1,6 @@
 <template>
   <div class="music-head">
-    <img src="http://on99ebnkk.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170413213632.png">
+    <img src="http://on99ebnkk.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170413213632.png" @click="$store.commit('setShowPlay', false)">
     <label>
       <input type="text"
       :placeholder = "placeholder"
@@ -185,5 +185,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/head'
+@import '../../style/head';
 </style>

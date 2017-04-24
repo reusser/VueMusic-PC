@@ -20,6 +20,7 @@
             <span>歌手：&nbsp;<span class="singer">{{singer}}</span></span>
           </p>
         </div>
+        <v-lyrics :sendLyric="sendLyric" :distance="30" :noLyric:="noLyric"></v-lyrics>
       </div>
     </div>
   </div>
@@ -27,6 +28,7 @@
 
 <script>
 import vRotate from './rotate.vue'
+import vLyrics from './lyrics.vue'
 /**
  * A module that define play component
  * @exports vPlay
@@ -35,21 +37,24 @@ import vRotate from './rotate.vue'
 export default {
   name: 'vPlay',
   components: {
-    vRotate
+    vRotate,
+    vLyrics
   },
   data() {
     return {
       imgUrl: '',
       isLike: false,
-      albumName: ''
+      albumName: '',
+      sendLyric: '',
+      noLyric: false
     }
   },
-  mounted() {
+  /*mounted() {
     this.axios.get(`http://localhost:3000/music/songDetail?ids=${this.id}`)
       .then(res => {
         this.albumName = res.data.songs && res.data.songs[0].album.name
       })
-  },
+  },*/
   computed: {
     isShow() {
       return this.$store.state.showPlay
@@ -72,9 +77,20 @@ export default {
   watch: {
     id: {
       handler(newVal) {
-        this.axios.get(`http://localhost:3000/music/songDetail?ids=${this.id}`)
+        this.axios.get(`http://localhost:3000/music/songDetail?ids=${newVal}`)
         .then(res => {
           this.albumName = res.data.songs && res.data.songs[0].album.name
+        })
+        .then(() => {
+          this.axios.get(`http://localhost:3000/lyric?id=${newVal}`)
+          .then(res => {
+            if (res.data.nolyric === true) {
+              this.noLyric = true
+              return
+            }
+            this.noLyric = false
+            this.sendLyric = res.data.lrc.lyric
+          })
         })
       }
     }
