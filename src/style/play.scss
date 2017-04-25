@@ -8,6 +8,7 @@
   transform-origin: left bottom;
   transition: all 1s;
   overflow-y:auto;
+  overflow-x: hidden;
   background-color: #fafafa;
 }
 .hide {
@@ -94,4 +95,98 @@
       vertical-align: top;
     }
   }
+}
+.comment-container {
+  position: absolute;
+  top: 50rem;
+  left: 50%;
+  width: 80rem;
+  transform: translateX(-50%);
+  .comment-head {
+    padding: 1rem 0;
+    font-size: 18px;
+    color: #444;
+    border-bottom: 1px solid #e4e4e4;
+    .comment-num {
+      margin-left: 2rem;
+      font-size: 13px;
+      color: #ababab;
+    }
+  }
+  .hot-comment-head {
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    font-size: 16px;
+    color: #949494;
+    font-family: "SimSun";
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .comment-box {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: {
+      top: 2rem;
+      bottom: 2rem;
+    }
+    border-bottom: 1px solid #e1e1e1;
+    .avatar {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      > img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+      }
+    }
+    .content {
+      width: 95%;
+      margin-left: 2rem;
+      font-size: 12px;
+      .user-name {
+        color: #2481c8;
+      }
+      .content-footer {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin-top: 1rem;
+        color: #9e9e9e;
+        div:nth-of-type(2) {
+          span {
+            padding: {
+              left: 1rem;
+              right: 1rem;
+            }
+          }
+          span:nth-of-type(2) {
+            border-left: 2px solid #d9d9d9;
+            border-right: 2px solid #d9d9d9;
+          }
+        }
+      }
+    }
+  }
+  .loading {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5rem;
+    text-align: center;
+    > p {
+      margin-top: 3rem;
+    }
+    .fa {
+      color: #c62f2f;
+      font-size: 30px;
+    }
+  }
+
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
