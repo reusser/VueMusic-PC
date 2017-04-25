@@ -1,11 +1,11 @@
 <template>
   <div class="lyrics-container" ref="lyc">
-    <template v-if="!noLyric">
+    <template v-if="!isNoLyric">
       <p v-for="(item, index) in lyricsArray" :class="index === nowLyricIndex ? 'now' : ''">
         {{item.txt}}
       </p>
     </template>
-    <p v-if="noLyric" class="no-lyric">
+    <p v-if="isNoLyric" class="no-lyric">
       纯音乐，请您欣赏
     </p>
     
@@ -38,7 +38,6 @@ export default {
     return {
       lyricsArray: [],
       nowLyricIndex: -1,
-      lastLyricIndex: -1,
       scrollDis: 0
     }
   },
@@ -51,6 +50,9 @@ export default {
     },
     curTimeNum() {
       return this.$store.state.curTimeNum
+    },
+    isNoLyric() {
+      return this.noLyric
     }
   },
   methods: {
@@ -80,10 +82,9 @@ export default {
   watch: {
     lyrics: {
       handler(newVal) {
-        if (this.noLyric === false) return
+        if (this.isNoLyric === true) return
         this.lyricsArray = []
         this.nowLyricIndex = -1
-        this.lastLyricIndex = -1
         this.scrollDis = 0
         this.$refs.lyc.scrollTop = 0
         newVal.forEach(item => {
@@ -118,6 +119,7 @@ export default {
             obj.totalTime = obj.min * 60 + obj.second + obj.ms / 100
             if (obj.txt.length > 0) this.lyricsArray.push(obj)
           }
+          this.lyricsArray.push({min: 999, second: 999, ms: 999, totalTime: '99999999', txt: ''})
           this.lyricsArray.sort((a, b) => a.totalTime - b.totalTime)
         })
         this.$refs.lyc.scrollTop = 0
@@ -126,7 +128,7 @@ export default {
     },
     curTimeNum: {
       handler(newVal) {
-        if (this.noLyric === true) {
+        if (this.isNoLyric === true) {
           return
         }
         this.showLyrics()

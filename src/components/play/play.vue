@@ -20,7 +20,7 @@
             <span>歌手：&nbsp;<span class="singer">{{singer}}</span></span>
           </p>
         </div>
-        <v-lyrics :sendLyric="sendLyric" :distance="30" :noLyric:="noLyric"></v-lyrics>
+        <v-lyrics :sendLyric="sendLyric" :distance="30" :noLyric="noLyric"></v-lyrics>
       </div>
     </div>
   </div>
