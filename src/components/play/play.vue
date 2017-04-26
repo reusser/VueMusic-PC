@@ -30,14 +30,17 @@
             <p class="comment-head">
               听友评论<span class="comment-num">(已有{{commentTotal}}条评论)</span>
             </p>
-            <div class="hot-comment">
+            <div class="hot-comment" v-if="nowPageIndex === 1">
               <p class="hot-comment-head">精彩评论</p>
               <div class="comment-box" v-for="item in hotCommentList">
                 <div class="avatar">
                   <img :src="item.avatarUrl">
                 </div>
                 <div class="content">
-                  <p><span class="user-name">{{item.userName}}:</span>{{item.content}}</p>
+                  <p><span class="user-name">{{item.userName}}:</span>&nbsp;&nbsp;{{item.content}}</p>
+                  <div class="replied" v-if="item.beReplied">
+                    <p><span class="user-name">@{{item.beRepliedUser}}</span>&nbsp;&nbsp;{{item.beRepliedContent}}</p>
+                  </div>
                   <div class="content-footer">
                     <div><span class="time">{{item.time}}</span></div>
                     <div>
@@ -48,6 +51,39 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="new-comment">
+              <p class="new-comment-head">最新评论</p>
+              <div class="comment-box" v-for="item in commentList">
+                <div class="avatar">
+                  <img :src="item.avatarUrl">
+                </div>
+                <div class="content">
+                  <p><span class="user-name">{{item.userName}}:</span>&nbsp;&nbsp;{{item.content}}</p>
+                  <div class="replied" v-if="item.beReplied">
+                    <p><span class="user-name">@{{item.beRepliedUser}}</span>&nbsp;&nbsp;{{item.beRepliedContent}}</p>
+                  </div>
+                  <div class="content-footer">
+                    <div><span class="time">{{item.time}}</span></div>
+                    <div>
+                      <span class="like-it"><i class="fa fa-thumbs-o-up fa-fw"></i>({{item.likedCount}})</span>
+                      <span>分享</span>
+                      <span>回复</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="page">
+              <ul>
+                <li class="pre-btn" @click="updateComment(~~ (nowPageIndex - 1))"><i class="fa fa-angle-left"></i></li>
+                <li :class="nowPageIndex === 1 ? 'active' : ''" @click="updateComment(1)">1</li>
+                <li class="apostrophe" v-show="nowPageIndex >= 6">...</li>
+                <li v-for="(item, index) in pageList" @click="updateComment(~~ item)" :class="~~ item === nowPageIndex ? 'active' : ''">{{item}}</li>
+                <li class="apostrophe" v-show="nowPageIndex <= Math.ceil(commentTotal / 20) - 5">...</li>
+                <li :class="nowPageIndex === Math.ceil(commentTotal / 20) ? 'active' : ''" @click="updateComment(Math.ceil(commentTotal / 20))">{{Math.ceil(commentTotal / 20)}}</li>
+                <li class="next-btn" @click="updateComment(~~ (nowPageIndex + 1))"><i class="fa fa-angle-right"></i></li>
+              </ul>
             </div>
           </div>
         </template>
@@ -86,7 +122,8 @@ export default {
       isLoading: true,
       commentList: [],
       hotCommentList: [],
-      commentTotal: 0
+      commentTotal: 0,
+      nowPageIndex: 1
     }
   },
   /*mounted() {
@@ -107,6 +144,13 @@ export default {
     },
     singer() {
       return this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex] && this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex].singer
+    },
+    pageList() {
+      let arr = []
+      let total = Math.ceil(this.commentTotal / 20)
+      if (this.nowPageIndex < 6) return [2, 3, 4, 5, 6, 7, 8]
+      if (this.nowPageIndex > total - 5) return [total - 7, total - 6, total - 5, total - 4, total - 3, total - 2, total - 1]
+      return [this.nowPageIndex - 3, this.nowPageIndex - 2, this.nowPageIndex - 1, this.nowPageIndex, this.nowPageIndex + 1, this.nowPageIndex + 2, this.nowPageIndex + 3]
     }
   },
   methods: {
@@ -116,6 +160,32 @@ export default {
     formatTime(ms) {
       let date = new Date(ms)
       return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日  ${date.getHours()}:${date.getMinutes()}`
+    },
+    updateComment(index) {
+      if (index < 1 || index > ~~(Math.ceil(this.commentTotal / 20))) return
+      this.nowPageIndex = index
+      this.commentList = []
+      this.axios.get(`http://localhost:3000/comment?id=${this.id}&offset=${(this.nowPageIndex - 1) * 20}`)
+      .then(res => {
+        this.commentTotal = res.data.total
+        res.data.comments.forEach(item => {
+          let obj = {
+            userName: item.user && item.user.nickname,
+            likedCount: item.likedCount,
+            time: this.formatTime(item.time),
+            avatarUrl: item.user.avatarUrl,
+            content: item.content
+          }
+          if (item.beReplied.length > 0) {
+            obj.beReplied = true
+            obj.beRepliedUser = item.beReplied[0].user && item.beReplied[0].user.nickname
+            obj.beRepliedContent = item.beReplied[0].content
+          } else {
+              obj.beReplied = false
+            }
+          this.commentList.push(obj)
+        })
+      })
     }
   },
   watch: {
@@ -124,6 +194,7 @@ export default {
         this.isLoading = true
         this.commentList = []
         this.hotCommentList = []
+        this.nowPageIndex = 1
         this.axios.get(`http://localhost:3000/music/songDetail?ids=${newVal}`)
         .then(res => {
           this.albumName = res.data.songs && res.data.songs[0].album.name
@@ -154,8 +225,8 @@ export default {
                 }
                 if (item.beReplied.length > 0) {
                   obj.beReplied = true
-                  obj.beRepliedUser = item.beReplied.user && item.beReplied.user.nickname
-                  obj.beRepliedContent = item.beReplied.content
+                  obj.beRepliedUser = item.beReplied[0].user && item.beReplied[0].user.nickname
+                  obj.beRepliedContent = item.beReplied[0].content
                 } else {
                   obj.beReplied = false
                 }
@@ -171,8 +242,8 @@ export default {
                 }
                 if (item.beReplied.length > 0) {
                   obj.beReplied = true
-                  obj.beRepliedUser = item.beReplied.user && item.beReplied.user.nickname
-                  obj.beRepliedContent = item.beReplied.content
+                  obj.beRepliedUser = item.beReplied[0].user && item.beReplied[0].user.nickname
+                  obj.beRepliedContent = item.beReplied[0].content
                 } else {
                   obj.beReplied = false
                 }

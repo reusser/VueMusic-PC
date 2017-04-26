@@ -113,8 +113,9 @@
       color: #ababab;
     }
   }
-  .hot-comment-head {
-    margin-top: 2rem;
+  .hot-comment-head,
+  .new-comment-head {
+    margin-top: 5rem;
     padding-bottom: 1rem;
     font-size: 16px;
     color: #949494;
@@ -146,6 +147,11 @@
       .user-name {
         color: #2481c8;
       }
+      .replied {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: #f1f1f4;
+      }
       .content-footer {
         display: flex;
         flex-flow: row nowrap;
@@ -163,6 +169,60 @@
             border-left: 2px solid #d9d9d9;
             border-right: 2px solid #d9d9d9;
           }
+        }
+      }
+    }
+  }
+  .page {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    ul {
+      list-style: none;
+      .fa {
+        color: #646464;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+      li {
+        display: inline-block;
+        height: 2.4rem;
+        padding: 0 .9rem;
+        color: #a4a4a4;
+        line-height: 2.4rem;
+        text-align: center;
+        font-size: 12px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &:hover {
+          color: #646464;
+          border: 1px solid #c3c4c7;
+          background-color: #ecedf1;
+        }
+      }
+      .pre-btn,
+      .next-btn {
+        border: 2px solid #e9e9e9;
+        &:hover {
+          border: 2px solid #e9e9e9;
+        }
+      }
+      .apostrophe {
+        cursor: default;
+        &:hover {
+          border: 1px solid transparent;
+          background-color: transparent;
+        }
+      }
+      .active {
+        color: #c62f2f;
+        text-decoration: underline;
+        border: none;
+        cursor: default;
+        &:hover {
+          color: #c62f2f;
+          background-color: transparent;
+          border: none;
         }
       }
     }

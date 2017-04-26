@@ -6,14 +6,14 @@
   overflow-y: auto;
   font-size: 13px;
   &::-webkit-scrollbar {
-      width: 8px;
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #cecece;
+    &:hover {
+      background-color: #aeaeae;
     }
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: #cecece;
-      &:hover {
-        background-color: #aeaeae;
-      }
   }
   p {
     margin: {

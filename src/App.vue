@@ -3,7 +3,7 @@
     <v-head></v-head>
     <v-sidebar></v-sidebar>
     <v-play></v-play>
-    <router-view class="router-view"></router-view>
+    <router-view class="router-view" v-if="!isShowPlay"></router-view>
     <v-footer></v-footer>
   </div>
 </template>
@@ -22,6 +22,11 @@ export default {
     vFooter,
     vSidebar,
     vPlay
+  },
+  computed: {
+    isShowPlay() {
+      return this.$store.state.showPlay
+    }
   }
 }
 </script>
