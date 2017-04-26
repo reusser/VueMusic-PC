@@ -6,10 +6,20 @@
   background: #fff;
   z-index: 4;
   transform-origin: left bottom;
-  transition: all 1s;
+  transition: all .5s;
   overflow-y:auto;
   overflow-x: hidden;
   background-color: #fafafa;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #cecece;
+    &:hover {
+      background-color: #aeaeae;
+    }
+  }
 }
 .hide {
   transform: scale(0, 0);
@@ -86,7 +96,8 @@
         color: #0a4aab;
       }
     }
-    .album-name {
+    .album-name,
+    .singer {
       display: inline-block;
       width: 10rem;
       overflow-x: hidden;

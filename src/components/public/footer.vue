@@ -4,7 +4,8 @@
       :src="url"
       v-show="false"
       ref="audio"
-      @ended="next(false)"></audio>
+      @ended="next(false)"
+      @timeupdate="timeupdate"></audio>
       <div class="footer-left">
         <span class="back" @click="prev">
           <i class="fa fa-step-backward"></i>
@@ -53,6 +54,7 @@
             @click="$store.commit('clear');
                     url = '';
                     $store.commit('pause');
+                    $store.commit('setShowPlay', false)
                 ">
             <i class="fa fa-trash-o"></i>清空
           </span>
@@ -65,7 +67,7 @@
         </ul>
         <div class="no-song" v-else>
           <p>你还没有添加任何歌曲!</p>
-          <p>去首页<span>发现音乐</span></p>
+          <p>去首页<span @click="$router.push({path:'/'})">发现音乐</span></p>
         </div>
       </div>
   </div>
@@ -92,7 +94,7 @@ import vSlider from '../slider.vue'
         curTimeNum: 0,
         tolTimeNum: 0,
         volume: 1,
-        timer: {},
+        //timer: {},
         isVolumeOff: false,
         saveVolume: 1,
         playStateAll: ['loop', 'loopOne', 'random', 'order'],
@@ -117,20 +119,20 @@ import vSlider from '../slider.vue'
         this.tolTimeNum = this.$refs.audio && this.$refs.audio.duration
         this.tolTime = this.$refs.audio && this.formatTime(this.$refs.audio.duration)
 
-        this.timer = setInterval(() => {
+        /*this.timer = setInterval(() => {
           this.curTimeNum = this.$refs.audio && this.$refs.audio.currentTime
           this.curTime = this.$refs.audio && this.formatTime(this.$refs.audio.currentTime)
-        }, 990)
+        }, 990)*/
       }, false)
 
       this.$refs.audio.addEventListener('pause', () => {
         this.$store.commit('pause')
-        clearInterval(this.timer)
+        //clearInterval(this.timer)
       })
 
       document.addEventListener('click', e => {
         let eles = this.$refs.footer && this.$refs.footer.getElementsByTagName('*')
-        for (let i = 0, length = eles.length; i < length; i++) {
+        for (let i = 0, length = eles && eles.length; i < length; i++) {
           if (e.target === eles[i] || e.target === this.$refs.footer) {
             return
           }
@@ -169,6 +171,10 @@ import vSlider from '../slider.vue'
         second = second > 9 ? second : `0${second}`
         min = min > 9 ? min : `0${min}`
         return `${min}:${second}`
+      },
+      timeupdate() {
+        this.curTimeNum = this.$refs.audio && this.$refs.audio.currentTime
+        this.curTime = this.$refs.audio && this.formatTime(this.$refs.audio.currentTime)
       },
       skip(skipWidth) {
         if (skipWidth === 0) {

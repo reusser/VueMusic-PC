@@ -1,14 +1,13 @@
 <template>
   <div class="lyrics-container" ref="lyc">
-    <template v-if="!isNoLyric">
-      <p v-for="(item, index) in lyricsArray" :class="index === nowLyricIndex ? 'now' : ''">
-        {{item.txt}}
-      </p>
-    </template>
+    <div ref="lyrics" class="lyrics" v-if="!isNoLyric">
+        <p v-for="(item, index) in lyricsArray" :class="index === nowLyricIndex ? 'now' : ''">
+          {{item.txt}}
+        </p>
+    </div>
     <p v-if="isNoLyric" class="no-lyric">
       纯音乐，请您欣赏
     </p>
-    
   </div>
 </template>
 
@@ -37,8 +36,7 @@ export default {
   data() {
     return {
       lyricsArray: [],
-      nowLyricIndex: -1,
-      scrollDis: 0
+      nowLyricIndex: -1
     }
   },
   computed: {
@@ -53,19 +51,32 @@ export default {
     },
     isNoLyric() {
       return this.noLyric
+    },
+    translateNum() {
+      if (this.nowLyricIndex <= 4) return 0
+      if (this.nowLyricIndex >= this.lyricsArray.length - 6) return (this.lyricsArray.length - 11) * (this.distance + 2)
+      return (this.nowLyricIndex - 4) * (this.distance + 2)
     }
   },
   methods: {
     showLyrics() {
-      for (let i = 0, length = this.lyricsArray.length; i < length; i++) {
+      let length = this.lyricsArray.length
+      for (let i = 0; i < length; i++) {
         if (this.lyricsArray[i].totalTime - this.curTimeNum > 0) {
           this.nowLyricIndex = i - 1 >= 0 ? i - 1 : -1
           break
         }
       }
-      this.nowLyricIndex > 4 ? this.animation((this.nowLyricIndex - 4) * (this.distance + 2)) : this.$refs.lyc.scrollTop = 0
+      //this.nowLyricIndex > 4 ? this.animation((this.nowLyricIndex - 4) * (this.distance + 2)) : this.$refs.lyc.scrollTop = 0
+     this.$refs.lyrics.style.transform = `translateY(-${this.translateNum}px)`
     },
-    animation(dis) {
+    /*scrollHandler() {
+      if (this.timer) clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.$refs.lyc.scrollTop = 0
+      }, 2000)
+    }*/
+    /*animation(dis) {
       let d = dis / 15
       let timer = setInterval( () => {
         if (this.scrollDis >= dis) {
@@ -77,7 +88,7 @@ export default {
         this.scrollDis += d
         this.$refs.lyc.scrollTop = this.scrollDis
       }, 1000 / 15)
-    }
+    }*/
   },
   watch: {
     lyrics: {
@@ -119,11 +130,11 @@ export default {
             obj.totalTime = obj.min * 60 + obj.second + obj.ms / 100
             if (obj.txt.length > 0) this.lyricsArray.push(obj)
           }
-          this.lyricsArray.push({min: 999, second: 999, ms: 999, totalTime: '99999999', txt: ''})
           this.lyricsArray.sort((a, b) => a.totalTime - b.totalTime)
         })
-        this.$refs.lyc.scrollTop = 0
-        this.scrollDis = 0 
+        this.lyricsArray.push({min: 999, second: 999, ms: 999, totalTime: '99999999', txt: ''})
+        //this.$refs.lyc.scrollTop = 0
+        //this.scrollDis = 0 
       }
     },
     curTimeNum: {

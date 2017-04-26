@@ -42,6 +42,7 @@ export default {
   watch: {
     id: {
       handler(newVal) {
+        if (!newVal) return
         this.axios.get(`http://localhost:3000/music/songDetail?ids=${this.id}`)
         .then(res => {
           this.imgUrl = res.data.songs[0].album.blurPicUrl

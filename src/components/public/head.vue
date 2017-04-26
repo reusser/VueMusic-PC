@@ -1,6 +1,6 @@
 <template>
   <div class="music-head">
-    <img src="http://on99ebnkk.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170413213632.png" @click="$store.commit('setShowPlay', false)">
+    <img src="http://on99ebnkk.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170413213632.png" @click="$store.commit('setShowPlay', false); $router.push({path: '/'})">
     <label>
       <input type="text"
       :placeholder = "placeholder"

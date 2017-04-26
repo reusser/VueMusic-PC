@@ -92,6 +92,7 @@ export default {
   watch: {
     songName: {
       handler(newVal) {
+        if (!newVal) return
         this.axios.get(`http://localhost:3000/search?keywords=${newVal}`)
         .then(res => {
           this.imgUrl = res.data.result.songs[0].album.blurPicUrl

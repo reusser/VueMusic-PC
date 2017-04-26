@@ -2,18 +2,10 @@
   position: relative;
   height: 73%;
   margin-top: 3rem;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   font-size: 13px;
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: #cecece;
-    &:hover {
-      background-color: #aeaeae;
-    }
+  .lyrics {
+    transition: transform .5s;
   }
   p {
     margin: {

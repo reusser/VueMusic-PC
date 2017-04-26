@@ -191,6 +191,7 @@ export default {
   watch: {
     id: {
       handler(newVal) {
+        if (!newVal) return
         this.isLoading = true
         this.commentList = []
         this.hotCommentList = []
