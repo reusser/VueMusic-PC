@@ -1,0 +1,78 @@
+.music-list {
+  width: 100%;
+  margin-bottom: 5rem;
+  li {
+    height: 3rem;
+    line-height: 3rem;
+    &:hover {
+      background-color: #ecedee;
+    }
+  }
+  span {
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 13px;
+  }
+  .music-list-head {
+    box-sizing: border-box;
+    color: #555;
+    font-size: 13px;
+    border-bottom: 1px solid #ced6d7;
+    span {
+      border-right: 1px solid #ced6d7;
+      vertical-align: middle;
+    }
+    .space,
+    .option {
+      width: 5rem;
+    }
+    .space {
+      height: 100%;
+    }
+    .music-title {
+      width: 40rem;
+    }
+    .singer {
+      width: 30rem;
+    }
+    .album-name {
+      width: 35rem;
+    }
+    .duration {
+      width: 5rem;
+      border-right: 0;
+    }
+  }
+  ul {
+    .index,
+    .option {
+      width: 5rem;
+      color: #777;
+    }
+    .index {
+      text-align: right;
+    }
+    .music-title {
+      width: 40rem;
+    }
+    .singer {
+      width: 30rem;
+      color: #777;
+      cursor: pointer;
+    }
+    .album-name {
+      width: 35rem;
+      color: #777;
+    }
+    .duration {
+      width: 5rem;
+      color: #777;
+    }
+    li:nth-child(odd) {
+      background-color: #f5f5f7;
+      &:hover {
+        background-color: #ecedee;
+      }
+    }
+  }
+}

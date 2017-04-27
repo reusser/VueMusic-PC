@@ -1,0 +1,71 @@
+.album-container {
+  .album-container-head {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2rem 3rem;
+    flex-flow: row nowrap;
+    .album-logo {
+      width: 20rem;
+      height: 20rem;
+      margin-right: 2rem;
+      border: 2px solid #ced6d7;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .detail {
+      margin-left: 2rem;
+      .tag {
+        display: inline-block;
+        width: 4rem;
+        height: 2.4rem;
+        line-height: 2.4rem;
+        text-align: center;
+        color: #fdf8f8;
+        vertical-align: middle;
+        background-color: #c62f2f;
+        border-radius: 3px;
+      }
+      p {
+        font-size: 14px;
+        margin-bottom: 1rem;
+      }
+      p:first-child {
+        margin-bottom: 4rem;
+      }
+      .album-name {
+        margin-left: 1rem;
+        font-size: 24px;
+        font-family: "SimSun";
+        color: #666;
+        vertical-align: middle;
+      }
+      .singer,
+      .publishtime {
+        margin-left: 1rem;
+        font-size: 13px;
+        color: #6b696b;
+      }
+    }
+  }
+  .nav {
+    box-sizing: border-box;
+    height: 3.2rem;
+    width: 100%;
+    margin-top: 5rem;
+    padding-left: 3rem;
+    border-bottom: 2px solid #c62f2f;
+    span {
+      display: inline-block;
+      width: 8rem;
+      height: 3.2rem;
+      line-height: 3.2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #fdf8f8;
+      background-color: #c62f2f;
+    }
+  }
+}

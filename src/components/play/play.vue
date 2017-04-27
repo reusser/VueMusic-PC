@@ -16,7 +16,7 @@
         <div class="detail-head">
           <p class="song-name">{{songName}}<span @click="$store.commit('setShowPlay', false)"><i class="fa fa-compress"></i></span></p>
           <p class="song-detail">
-            <span>专辑：&nbsp;<span class="album-name">{{albumName}}</span></span>
+            <span>专辑：&nbsp;<span class="album-name" @click="$router.push({name: 'album', params: {id: albumId}}); $store.commit('setShowPlay', false)">{{albumName}}</span></span>
             <span>歌手：&nbsp;<span class="singer" @click="$router.push({name: 'singer', params: {id: singerId}}); $store.commit('setShowPlay', false)">{{singer}}</span></span>
           </p>
         </div>
@@ -117,6 +117,7 @@ export default {
       imgUrl: '',
       isLike: false,
       albumName: '',
+      albumId: '',
       sendLyric: '',
       noLyric: false,
       isLoading: true,
@@ -202,6 +203,7 @@ export default {
         this.axios.get(`http://localhost:3000/music/songDetail?ids=${newVal}`)
         .then(res => {
           this.albumName = res.data.songs && res.data.songs[0].album.name
+          this.albumId = res.data.songs && res.data.songs[0].album.id
         })
         .then(() => {
           this.axios.get(`http://localhost:3000/lyric?id=${newVal}`)
