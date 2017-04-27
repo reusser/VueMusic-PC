@@ -1,0 +1,159 @@
+.singer-container {
+  .singer-head {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2rem 3rem;
+    flex-flow: row nowrap;
+    .singer-img {
+      width: 20rem;
+      height: 20rem;
+      margin-right: 2rem;
+      border: 2px solid #ced6d7;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .detail {
+      margin-left: 2rem;
+      .tag {
+        display: inline-block;
+        width: 4rem;
+        height: 2.4rem;
+        line-height: 2.4rem;
+        text-align: center;
+        color: #fdf8f8;
+        vertical-align: middle;
+        background-color: #c62f2f;
+        border-radius: 3px;
+      }
+      p {
+        font-size: 14px;
+        margin-bottom: 1rem;
+      }
+      .singer {
+        font-size: 24px;
+        font-family: "SimSun";
+        color: #666;
+        vertical-align: middle;
+      }
+      .alias {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        font-size: 13px;
+      }
+      .detail-num {
+        color: #6b696b;
+      }
+    }
+  }
+  .nav {
+    box-sizing: border-box;
+    height: 3.2rem;
+    width: 100%;
+    margin-top: 5rem;
+    padding-left: 3rem;
+    border-bottom: 2px solid #c62f2f;
+    span {
+      display: inline-block;
+      width: 8rem;
+      height: 3.2rem;
+      line-height: 3.2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #fdf8f8;
+      background-color: #c62f2f;
+    }
+  }
+  .albums {
+    box-sizing: border-box;
+    padding: 2rem 3rem;
+    .album-logo {
+      width: 16rem;
+      height: 16rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .publishtime {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 12px;
+      color: #888;
+    }
+    .hot-songs,
+    .album-songs {
+      display: flex;
+      flex-flow: row nowrap;
+      margin-bottom: 5rem;
+    }
+    .albums-content {
+      margin-left: 6rem;
+      flex-grow: 1;
+    }
+    .albums-title {
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 2rem;
+      &:hover {
+        color: #000;
+      }
+    }
+    .album-songs {
+      .albums-title {
+        cursor: pointer;
+      }
+    }
+    ul {
+      font-size: 13px;
+      list-style: none;
+      border: 2px solid #ededee;
+      .fa {
+        color: #b6b6b6;
+      }
+      .index,
+      .time {
+        color: #a1a2a2;
+        font-weight: 500;
+      }
+      li {
+        height: 3rem;
+        line-height: 3rem;
+        .index {
+          margin-left: 2rem;
+        }
+        .fa {
+          margin-left: .5rem;
+        }
+        .song-name {
+          display: inline-block;
+          width: 80rem;
+          margin-left: 2rem;
+          cursor: default;
+        }
+        &:hover {
+          background-color: #ecedee;
+        }
+      }
+      li:nth-child(even) {
+        background-color: #f5f5f7;
+        &:hover {
+          background-color: #ecedee;
+        }
+      }
+    }
+    .show-all {
+      padding: 1rem;
+      font-size: 13px;
+      color: #a1a2a2;
+      span {
+        cursor: pointer;
+        &:hover {
+          color: #666;
+        }
+      }
+    }
+  }
+}

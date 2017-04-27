@@ -14,7 +14,7 @@
       </div>
       <div class="detail">
         <div class="detail-head">
-          <p class="song-name">{{songName}}</p>
+          <p class="song-name">{{songName}}<span @click="$store.commit('setShowPlay', false)"><i class="fa fa-compress"></i></span></p>
           <p class="song-detail">
             <span>专辑：&nbsp;<span class="album-name">{{albumName}}</span></span>
             <span>歌手：&nbsp;<span class="singer">{{singer}}</span></span>

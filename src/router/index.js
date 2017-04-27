@@ -13,7 +13,7 @@ export default new Router({
       component: findMusic
     },
     {
-      path: '/singer',
+      path: '/singer/:id',
       name: 'singer',
       component: singer
     }

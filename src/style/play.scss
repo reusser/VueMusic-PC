@@ -79,12 +79,29 @@
   left: 44rem;
   right: 0;
   .song-name {
+    position: relative;
     padding: {
       top: 3rem;
       bottom: 1rem;
     }
     font-size: 22px;
     color: #292a28;
+    span {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 4rem;
+      height: 3rem;
+      line-height: 3rem;
+      text-align: center;
+      color: #555;
+      border-radius: 3px;
+      background: rgba(250, 250, 250, .3);
+      cursor: pointer;
+      &:hover {
+        background: rgba(250, 250, 250, .6);
+      }
+    }
   }
   .song-detail {
     font-size: 12px;
