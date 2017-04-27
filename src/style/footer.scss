@@ -158,13 +158,13 @@
       > span:first-child {
           display: inline-block;
           box-sizing: border-box;
-          width: 40rem;
+          width: 47rem;
           padding-left: 5rem;
           text-align: left;
         }
         > span:last-child {
           display: inline-block;
-          width: 10rem;
+          width: 5rem;
           text-align: left;
         }
       > span:last-child:hover {
@@ -194,14 +194,18 @@
         .name {
           display: inline-block;
           box-sizing: border-box;
-          width: 40rem;
+          width: 35rem;
           padding-left: 5rem;
           text-align: left;
         }
         .singer {
           display: inline-block;
-          width: 10rem;
+          width: 12rem;
           text-align: left;
+        }
+        .singer,
+        .duration {
+          color: #888;
         }
       }
       li:nth-child(even) {

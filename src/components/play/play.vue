@@ -17,7 +17,7 @@
           <p class="song-name">{{songName}}<span @click="$store.commit('setShowPlay', false)"><i class="fa fa-compress"></i></span></p>
           <p class="song-detail">
             <span>专辑：&nbsp;<span class="album-name">{{albumName}}</span></span>
-            <span>歌手：&nbsp;<span class="singer">{{singer}}</span></span>
+            <span>歌手：&nbsp;<span class="singer" @click="$router.push({name: 'singer', params: {id: singerId}}); $store.commit('setShowPlay', false)">{{singer}}</span></span>
           </p>
         </div>
         <v-lyrics :sendLyric="sendLyric" :distance="30" :noLyric="noLyric"></v-lyrics>
@@ -144,6 +144,9 @@ export default {
     },
     singer() {
       return this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex] && this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex].singer
+    },
+    singerId() {
+      return this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex] && this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex].singerId
     },
     pageList() {
       let arr = []

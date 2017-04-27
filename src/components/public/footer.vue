@@ -62,7 +62,10 @@
         <ul v-if="musicList && musicList.length !== 0">
           <li v-for="(item, index) in musicList" @dblclick="changeMusic(index)">
             <span class="name">{{item.name}}</span>
-            <span class="singer">{{item.singer}}</span>
+            <span class="singer" 
+              @click="$router.push({name: 'singer', params:{id: item.singerId}})"
+            >{{item.singer}}</span>
+            <span class="duration">{{formatDuration(~~ item.duration)}}</span>
           </li>
         </ul>
         <div class="no-song" v-else>
@@ -88,7 +91,6 @@ import vSlider from '../slider.vue'
     data() {
       return {
         url: '',
-        id: 347230,
         curTime: '00:00',
         tolTime: '00:00',
         curTimeNum: 0,
@@ -162,12 +164,23 @@ import vSlider from '../slider.vue'
       },
       showMiniAudio() {
         return this.musicList.length > 0
+      },
+      id() {
+        return this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex] && this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex].id
       }
     },
     methods: {
       formatTime(time) {
         let second = time.toFixed() % 60
         let min = (time.toFixed() - second) / 60
+        second = second > 9 ? second : `0${second}`
+        min = min > 9 ? min : `0${min}`
+        return `${min}:${second}`
+      },
+      formatDuration(time) {
+        time = Math.floor(time / 1000)
+        let second = time % 60
+        let min = (time - second) / 60
         second = second > 9 ? second : `0${second}`
         min = min > 9 ? min : `0${min}`
         return `${min}:${second}`
@@ -288,6 +301,12 @@ import vSlider from '../slider.vue'
       curTimeNum: {
         handler(newVal) {
           this.$store.commit('setCurTimeNum', newVal)
+        }
+      },
+      id: {
+        handler(newVal) {
+          if(!newVal) return
+          this.getURL(newVal)
         }
       }
     }

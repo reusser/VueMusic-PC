@@ -97,6 +97,8 @@ export default {
   },
   methods: {
     fetchData() {
+      this.hotSongsList = {"musicData":[]}
+      this.albumList = []
       this.axios.get(`http://localhost:3000/artists?id=${this.$route.params.id}`)
       .then(res => {
         this.singerId = res.data.artist && res.data.artist.id
@@ -160,6 +162,13 @@ export default {
       month = month > 9 ? month : `0${month}`
       day = day > 9 ? day : `0${day}`
       return `${year}-${month}-${day}`
+    }
+  },
+  watch: {
+    $route: {
+      handler(to, from) {
+        this.fetchData()
+      }
     }
   }
 }
