@@ -1,33 +1,3 @@
-.nav {
-  height: 3.2rem;
-  width: 100%;
-  padding-left: 3rem;
-  overflow: hidden;
-  border-bottom: 2px solid #c62f2f;
-  span {
-    display: inline-block;
-    width: 8rem;
-    height: 3.2rem;
-    margin: 0 .5rem;
-    line-height: 3.2rem;
-    text-align: center;
-    font-size: 13px;
-    background-color: #fff;
-    border: 1px solid #ced6d7;
-    cursor: pointer;
-    &:hover {
-      background-color: #ecedee;
-    }
-  }
-  .active {
-    color: #fdf8f8;
-    background-color: #c62f2f;
-    border: 1px solid #c62f2f;
-    &:hover {
-      background-color: #c62f2f;
-    }
-  }
-}
 .search-list-head {
   box-sizing: border-box;
   height: 3rem;
@@ -40,7 +10,7 @@
     margin-left: 1rem;
     font-size: 13px;
     vertical-align: middle;
-    border-right: 1px solid #ced6d7; 
+    border-right: 1px solid #ced6d7;
   }
   .space,
   .option {
@@ -63,9 +33,9 @@
     border-right: 0;
   }
 }
-ul {
+.songs {
+  margin-bottom: 5rem;
   li {
-    height: 3rem;
     line-height: 3rem;
     &:hover {
       background-color: #ecedee;
@@ -75,6 +45,9 @@ ul {
     display: inline-block;
     margin-left: 1rem;
     font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     vertical-align: middle;
   }
   .index,
@@ -87,6 +60,16 @@ ul {
   }
   .music-title {
     width: 40rem;
+  }
+  div.music-title {
+    display: inline-block;
+    height: 6rem;
+    margin-left: 1rem;
+    font-size: 13px;
+    vertical-align: top;
+  }
+  .alias {
+    color: #888;
   }
   .singer {
     width: 30rem;
@@ -109,3 +92,57 @@ ul {
     }
   }
 }
+.page {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    ul {
+      list-style: none;
+      .fa {
+        color: #646464;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+      li {
+        display: inline-block;
+        height: 2.4rem;
+        padding: 0 .9rem;
+        color: #a4a4a4;
+        line-height: 2.4rem;
+        text-align: center;
+        font-size: 12px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &:hover {
+          color: #646464;
+          border: 1px solid #c3c4c7;
+          background-color: #ecedf1;
+        }
+      }
+      .pre-btn,
+      .next-btn {
+        border: 2px solid #e9e9e9;
+        &:hover {
+          border: 2px solid #e9e9e9;
+        }
+      }
+      .apostrophe {
+        cursor: default;
+        &:hover {
+          border: 1px solid transparent;
+          background-color: transparent;
+        }
+      }
+      .active {
+        color: #c62f2f;
+        text-decoration: underline;
+        border: none;
+        cursor: default;
+        &:hover {
+          color: #c62f2f;
+          background-color: transparent;
+          border: none;
+        }
+      }
+    }
+  }

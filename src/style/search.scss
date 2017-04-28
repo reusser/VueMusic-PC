@@ -9,6 +9,36 @@
       margin: 0 .5rem;
     }
   }
+  .nav {
+    height: 3.2rem;
+    width: 100%;
+    padding-left: 3rem;
+    overflow: hidden;
+    border-bottom: 2px solid #c62f2f;
+    span {
+      display: inline-block;
+      width: 8rem;
+      height: 3.2rem;
+      margin: 0 .5rem;
+      line-height: 3.2rem;
+      text-align: center;
+      font-size: 13px;
+      background-color: #fff;
+      border: 1px solid #ced6d7;
+      cursor: pointer;
+      &:hover {
+        background-color: #ecedee;
+      }
+    }
+    .active {
+      color: #fdf8f8;
+      background-color: #c62f2f;
+      border: 1px solid #c62f2f;
+      &:hover {
+        background-color: #c62f2f;
+      }
+    }
+  }
   .loading {
     position: absolute;
     top: 0;
