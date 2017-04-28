@@ -1,0 +1,33 @@
+.search-container {
+  .search-count {
+    padding: 3rem;
+    font-size: 13px;
+    .keywords {
+      color: #3f6bad;
+    }
+    .search-num {
+      margin: 0 .5rem;
+    }
+  }
+  .loading {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5rem;
+    text-align: center;
+    > p {
+      margin-top: 3rem;
+    }
+    .fa {
+      color: #c62f2f;
+      font-size: 30px;
+    }
+  }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}

@@ -22,6 +22,7 @@ body {
     right: 0;
     bottom: 4.6rem;
     left: 20rem;
+    overflow-x: hidden;
     overflow-y: auto;
     background-color: #fafafa;
     &::-webkit-scrollbar {

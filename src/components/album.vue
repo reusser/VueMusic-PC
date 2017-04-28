@@ -7,7 +7,7 @@
       <div class="detail">
         <p><span class="tag">专辑</span><span class="album-name">{{albumName}}</span></p>
         <p>歌手:<span class="singer">{{singer}}</span></p>
-        <p>时间:<span class="publishtime">{{formatDate(time)}}</span></p>
+        <p>时间:<span class="publishtime">{{time && formatDate(time)}}</span></p>
       </div>
     </div>
     <div class="nav">
