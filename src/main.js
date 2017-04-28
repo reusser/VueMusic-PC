@@ -53,6 +53,9 @@ const store = new Vuex.Store({
     },
     setShowPlay: (state, playload) => {
       state.showPlay = playload
+    },
+    modifyMusicList: (state, playload) => {
+      state.musicList.musicData.splice(state.nowPlayIndex + 1, 0, playload)
     } 
   },
   actions: {

@@ -6,7 +6,8 @@
       :placeholder = "placeholder"
       @focus = "searchFocus"
       @blur = "searchBlur"
-      v-model = "searchText"><i class="fa fa-search" :class="{active: isActive}"></i>
+      @keyup.enter = "searchHandler(searchText)"
+      v-model = "searchText"><i class="fa fa-search" :class="{active: isActive}" @click="searchHandler(searchText)"></i>
       </label>
     <div class="right">
       <div class="settings">
@@ -179,6 +180,12 @@ export default {
     },
     signIn() {
       this.user.isLogin = true
+    },
+    searchHandler(keywords) {
+      keywords = keywords.trim()
+      if (keywords === '') return alert('输入关键词搜索')
+      this.$router.push({name: 'search', params: {keywords: keywords}})
+      this.$store.commit('setShowPlay', false)
     }
   }
 }

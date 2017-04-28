@@ -163,7 +163,11 @@ export default {
     },
     formatTime(ms) {
       let date = new Date(ms)
-      return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日  ${date.getHours()}:${date.getMinutes()}`
+      let hours = date.getHours()
+      hours = hours > 9 ? hours : `0${hours}`
+      let minutes = date.getMinutes()
+      minutes = minutes > 9 ? minutes : `0${minutes}`
+      return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日  ${hours}:${minutes}`
     },
     updateComment(index) {
       if (index < 1 || index > ~~(Math.ceil(this.commentTotal / 20))) return

@@ -49,7 +49,7 @@
           <p class="publishtime">{{formatDate(item.time)}}</p>
         </div>
         <div class="albums-content">
-          <p class="albums-title">{{item.name}}</p>
+          <p class="albums-title"><span @click="$router.push({name: 'album', params: {id: item.albumId}})">{{item.name}}</span></p>
           <ul>
             <li 
               v-for="(songs, index) in item.musicData.musicData" 

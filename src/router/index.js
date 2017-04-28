@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import findMusic from '../components/findMusic/findMusic.vue'
 import singer from '../components/singer.vue'
 import album from '../components/album.vue'
+import search from '../components/search.vue'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/album/:id',
       name: 'album',
       component: album
+    },
+    {
+      path: '/search/:keywords',
+      name: 'search',
+      component: search
     }
   ]
 })
