@@ -45,7 +45,7 @@ export default {
   methods: {
     fetchData() {
       this.list = {musicData:[]}
-      this.axios.get(`http://localhost:3000/album?id=${this.$route.params.id}`)
+      this.axios.get(`http://oyhfe.com:3000/album?id=${this.$route.params.id}`)
       .then(res => {
         this.albumImgUrl = res.data.album && res.data.album.blurPicUrl
         this.albumName = res.data.album && res.data.album.name

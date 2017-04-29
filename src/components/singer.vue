@@ -99,7 +99,7 @@ export default {
     fetchData() {
       this.hotSongsList = {"musicData":[]}
       this.albumList = []
-      this.axios.get(`http://localhost:3000/artists?id=${this.$route.params.id}`)
+      this.axios.get(`http://oyhfe.com:3000/artists?id=${this.$route.params.id}`)
       .then(res => {
         this.singerId = res.data.artist && res.data.artist.id
         this.singer = res.data.artist && res.data.artist.name
@@ -119,7 +119,7 @@ export default {
           this.hotSongsList.musicData.push(obj)
         })
       })
-      this.axios.get(`http://localhost:3000/artist_album?id=${this.$route.params.id}`)
+      this.axios.get(`http://oyhfe.com:3000/artist_album?id=${this.$route.params.id}`)
       .then(res => {
         res.data.hotAlbums.forEach(item => {
           let obj = {
@@ -129,7 +129,7 @@ export default {
             albumImgUrl: item.picUrl,
             musicData: {"musicData": []}
           }
-          this.axios.get(`http://localhost:3000/album?id=${obj.albumId}`)
+          this.axios.get(`http://oyhfe.com:3000/album?id=${obj.albumId}`)
           .then(res => {
             res.data.album.songs.forEach(item => {
               let song = {

@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted() {
-    this.axios.get(`http://localhost:3000/search?keywords=${this.songName}`)
+    this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.songName}`)
     .then(res => {
       this.imgUrl = res.data.result && res.data.result.songs[0].album.blurPicUrl
     })
@@ -93,7 +93,7 @@ export default {
     songName: {
       handler(newVal) {
         if (!newVal) return
-        this.axios.get(`http://localhost:3000/search?keywords=${newVal}`)
+        this.axios.get(`http://oyhfe.com:3000/search?keywords=${newVal}`)
         .then(res => {
           this.imgUrl = res.data.result.songs[0].album.blurPicUrl
         })

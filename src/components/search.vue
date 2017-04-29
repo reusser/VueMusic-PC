@@ -57,7 +57,7 @@ export default {
       this.searchSongList = {musicData: []}
       this.isLoading = true
       this.searchType = 1
-      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}`)
+      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}`)
       .then(res => {
         this.searchSongsNum = res.data.result && res.data.result.songCount
         res.data.result.songs.forEach(item => {
@@ -87,7 +87,7 @@ export default {
     fetchSingerData() {
       this.searchSingerList = []
       this.isLoading = true
-      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
+      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
       .then(res => {
         setTimeout(() => {
           this.isLoading = false
@@ -98,7 +98,7 @@ export default {
       if (index < 1 || index > ~~(Math.ceil(this.searchSongsNum / 30))) return
       this.nowPageIndex = index
       this.searchSongList = {musicData: []}
-      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}&offset=${(index - 1) * 30}`)
+      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&offset=${(index - 1) * 30}`)
       .then(res => {
         res.data.result.songs.forEach(item => {
           let obj = {

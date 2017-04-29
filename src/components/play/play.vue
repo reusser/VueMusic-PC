@@ -173,7 +173,7 @@ export default {
       if (index < 1 || index > ~~(Math.ceil(this.commentTotal / 20))) return
       this.nowPageIndex = index
       this.commentList = []
-      this.axios.get(`http://localhost:3000/comment?id=${this.id}&offset=${(this.nowPageIndex - 1) * 20}`)
+      this.axios.get(`http://oyhfe.com:3000/comment?id=${this.id}&offset=${(this.nowPageIndex - 1) * 20}`)
       .then(res => {
         this.commentTotal = res.data.total
         res.data.comments.forEach(item => {
@@ -204,13 +204,13 @@ export default {
         this.commentList = []
         this.hotCommentList = []
         this.nowPageIndex = 1
-        this.axios.get(`http://localhost:3000/music/songDetail?ids=${newVal}`)
+        this.axios.get(`http://oyhfe.com:3000/music/songDetail?ids=${newVal}`)
         .then(res => {
           this.albumName = res.data.songs && res.data.songs[0].album.name
           this.albumId = res.data.songs && res.data.songs[0].album.id
         })
         .then(() => {
-          this.axios.get(`http://localhost:3000/lyric?id=${newVal}`)
+          this.axios.get(`http://oyhfe.com:3000/lyric?id=${newVal}`)
           .then(res => {
             if (res.data.nolyric === true) {
               this.noLyric = true
@@ -222,7 +222,7 @@ export default {
         })
         .then(() => {
           setTimeout(()=> {
-            this.axios.get(`http://localhost:3000/comment?id=${newVal}`)
+            this.axios.get(`http://oyhfe.com:3000/comment?id=${newVal}`)
             .then(res => {
               this.commentTotal = res.data.total
               res.data.hotComments.slice(0, 10).forEach(item => {

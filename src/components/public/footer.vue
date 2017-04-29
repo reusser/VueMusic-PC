@@ -108,7 +108,7 @@ import vSlider from '../slider.vue'
       this.$store.dispatch('getInitData')
       .then(data => this.$store.commit('setMusicList', data))
       .then(() => {
-        this.axios.get(`http://localhost:3000/music/url?id=${this.musicList[0].id}`)
+        this.axios.get(`http://oyhfe.com:3000/music/url?id=${this.musicList[0].id}`)
           .then(response => {
             this.url = response.data.data[0].url
             this.$store.commit('setPlayIndex', 0)
@@ -275,7 +275,7 @@ import vSlider from '../slider.vue'
         this.getURL(this.musicList[this.nowPlayIndex].id)
       },
       getURL(id) {
-        this.axios.get(`http://localhost:3000/music/url?id=${id}`)
+        this.axios.get(`http://oyhfe.com:3000/music/url?id=${id}`)
         .then(res => this.url = res.data.data[0].url)
       },
       playOrPause() {
