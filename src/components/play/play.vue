@@ -77,7 +77,7 @@
             <div class="page">
               <ul>
                 <li class="pre-btn" @click="updateComment(~~ (nowPageIndex - 1))"><i class="fa fa-angle-left"></i></li>
-                <li :class="nowPageIndex === 1 ? 'active' : ''" @click="updateComment(1)">1</li>
+                <li :class="nowPageIndex === 1 ? 'active' : ''" @click="updateComment(1)" v-if="Math.ceil(commentTotal / 20) > 1">1</li>
                 <li class="apostrophe" v-show="nowPageIndex >= 6">...</li>
                 <li v-for="(item, index) in pageList" @click="updateComment(~~ item)" :class="~~ item === nowPageIndex ? 'active' : ''">{{item}}</li>
                 <li class="apostrophe" v-show="nowPageIndex <= Math.ceil(commentTotal / 20) - 5">...</li>
@@ -152,6 +152,13 @@ export default {
     pageList() {
       let arr = []
       let total = Math.ceil(this.commentTotal / 20)
+      if (total < 3) return []
+      if (total < 9) {
+        let arr = [...Array(total).keys()]
+        arr.shift()
+        arr.shift()
+        return arr
+      }
       if (this.nowPageIndex < 6) return [2, 3, 4, 5, 6, 7, 8]
       if (this.nowPageIndex > total - 5) return [total - 7, total - 6, total - 5, total - 4, total - 3, total - 2, total - 1]
       return [this.nowPageIndex - 3, this.nowPageIndex - 2, this.nowPageIndex - 1, this.nowPageIndex, this.nowPageIndex + 1, this.nowPageIndex + 2, this.nowPageIndex + 3]

@@ -67,7 +67,7 @@ const store = new Vuex.Store({
   actions: {
     getInitData() {
       return new Promise((resolve, reject) => {
-        Vue.axios.get('/music-data')
+        Vue.axios.get('http://oyhfe.com:666/music-data')
           .then(res => {
             resolve(res.data.musicData)
           })
@@ -75,7 +75,7 @@ const store = new Vuex.Store({
     },
     getInitCommend() {
       return new Promise((resolve, reject) => {
-        Vue.axios.get('/commend-list')
+        Vue.axios.get('http://oyhfe.com:666/commend-list')
           .then(res => {
             resolve(res.data.commendList)
           })
