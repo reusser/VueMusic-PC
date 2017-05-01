@@ -23,7 +23,8 @@ const store = new Vuex.Store({
     showMiniAudio: true,
     commendList: {'commendList': []},
     curTimeNum: 0,
-    showPlay: false
+    showPlay: false,
+    showAbout: false
   },
   mutations: {
     setMusicList: (state, playload) => {
@@ -62,6 +63,9 @@ const store = new Vuex.Store({
       }
       state.musicList.musicData.splice(state.nowPlayIndex + 1, 0, playload)
       state.nowPlayIndex = state.nowPlayIndex + 1
+    },
+    setShowAbout: (state, playload) => {
+      state.showAbout = playload
     } 
   },
   actions: {

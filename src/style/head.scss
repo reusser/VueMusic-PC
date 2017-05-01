@@ -47,6 +47,17 @@ $netRed: #c62f2f;
   .active {
     color: #fff;
   }
+  .about {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #eee;
+    cursor: pointer;
+    &:hover {
+      color: #fff;
+    }
+  }
   .right {
     position: absolute;
     right: 2rem;

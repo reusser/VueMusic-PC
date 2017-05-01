@@ -9,6 +9,7 @@
       @keyup.enter = "searchHandler(searchText)"
       v-model = "searchText"><i class="fa fa-search" :class="{active: isActive}" @click="searchHandler(searchText)"></i>
       </label>
+      <span class="about" @click="$store.commit('setShowAbout', true)">关于我</span>
     <div class="right">
       <div class="settings">
         <img :src="user.avatarUrl">

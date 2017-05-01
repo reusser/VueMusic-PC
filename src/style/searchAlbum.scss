@@ -26,6 +26,11 @@
         display: inline-block;
         width: 40rem;
       }
+      .singer,
+      .album-name {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
       &:hover {
         background-color: #ecedee;
       }
