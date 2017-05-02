@@ -8,6 +8,7 @@ import songList from '../components/songList.vue'
 import playList from '../components/findMusic/playList.vue'
 import rank from '../components/findMusic/rank.vue'
 import hotSinger from '../components/findMusic/hotSinger.vue'
+import newSong from '../components/findMusic/newSong.vue'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/hotSinger',
       name: 'hotSinger',
       component: hotSinger
+    },
+    {
+      path: '/newSong',
+      name: 'newSong',
+      component: newSong
     }
   ]
 })

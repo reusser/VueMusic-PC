@@ -5,7 +5,7 @@
       <li @click="$router.push({name: 'playList'})">歌单</li>
       <li @click="$router.push({name: 'rank'})">排行榜</li>
       <li @click="$router.push({name: 'hotSinger'})">歌手</li>
-      <li>最新音乐</li>
+      <li @click="$router.push({name: 'newSong'})">最新音乐</li>
     </ul>
     <v-banner
       :imgs="[

@@ -5,7 +5,7 @@
       <li class="active">歌单</li>
       <li @click="$router.push({name: 'rank'})"> 排行榜</li>
       <li @click="$router.push({name: 'hotSinger'})">歌手</li>
-      <li>最新音乐</li>
+      <li @click="$router.push({name: 'newSong'})">最新音乐</li>
     </ul>
     <ul class="playlists">
       <template v-for="item in playlists">
