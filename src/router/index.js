@@ -6,6 +6,7 @@ import album from '../components/album.vue'
 import search from '../components/search.vue'
 import songList from '../components/songList.vue'
 import playList from '../components/findMusic/playList.vue'
+import rank from '../components/findMusic/rank.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/playList',
       name: 'playList',
       component: playList
+    },
+    {
+      path: '/rank',
+      name: 'rank',
+      component: rank
     }
   ]
 })
