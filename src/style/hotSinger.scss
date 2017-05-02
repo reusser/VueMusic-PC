@@ -1,0 +1,60 @@
+.hot-singer-container {
+  padding: {
+    left: 3rem;
+    right: 3rem;
+  }
+  .hot-singer-nav {
+    height: 4rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    line-height: 4rem;
+    border-bottom: 1px solid #e4e4e4;
+    li {
+      display: inline-block;
+      height: 95%;
+      width: 8rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      vertical-align: middle;
+      cursor: pointer;
+      &:hover {
+        color: #c62f2f;
+      }
+    }
+    .active {
+      color: #c62f2f;
+      border-bottom: 3px solid #c62f2f;
+    }
+  }
+  .singers {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100rem;
+    margin: 0 auto;
+    list-style: none;
+    li {
+      position: relative;
+      height: 20rem;
+      margin: 2rem .7rem 0 .7rem;
+    }
+    img {
+      display: block;
+      width: 15rem;
+      height: 15rem;
+      border: 1px solid #e4e4e4;
+      cursor: pointer;
+    }
+    p {
+      height: 3rem;
+      line-height: 3rem;
+      font-size: 13px;
+      color: #555;
+      span {
+        cursor: pointer;
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+  }
+}
