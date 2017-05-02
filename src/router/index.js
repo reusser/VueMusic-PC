@@ -5,6 +5,7 @@ import singer from '../components/singer.vue'
 import album from '../components/album.vue'
 import search from '../components/search.vue'
 import songList from '../components/songList.vue'
+import playList from '../components/findMusic/playList.vue'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/songList/:id',
       name: 'songList',
       component: songList
+    },
+    {
+      path: '/playList',
+      name: 'playList',
+      component: playList
     }
   ]
 })

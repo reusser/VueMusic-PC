@@ -3,16 +3,16 @@
     left: 3rem;
     right: 3rem;
   }
-    &::-webkit-scrollbar {
-      width: 8px;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #e1e1e2;
+    &:hover {
+      background-color: #cfcfd1;
     }
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: #e1e1e2;
-      &:hover {
-        background-color: #cfcfd1;
-      }
-    }
+  }
   .find-music-nav {
     height: 4rem;
     text-align: center;

@@ -1,0 +1,112 @@
+.playlist-container {
+  padding: {
+    left: 3rem;
+    right: 3rem;
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #e1e1e2;
+    &:hover {
+      background-color: #cfcfd1;
+    }
+  }
+  .playlist-nav {
+    height: 4rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    line-height: 4rem;
+    border-bottom: 1px solid #e4e4e4;
+    li {
+      display: inline-block;
+      height: 95%;
+      width: 8rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      vertical-align: middle;
+      cursor: pointer;
+      &:hover {
+        color: #c62f2f;
+      }
+    }
+    .active {
+      color: #c62f2f;
+      border-bottom: 3px solid #c62f2f;
+    }
+  }
+  .playlists {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      width: 105rem;
+      margin: 0 auto;
+      list-style: none;
+      li {
+        position: relative;
+        width: 19rem;
+        height: 24rem;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        .detail {
+          position: relative;
+        }
+        .item-img {
+          position: relative;
+          height: 19rem;
+          margin-bottom: .5rem;
+          border: 2px solid #e4e4e4;
+          cursor: pointer;
+        }
+        .creator {
+          position: absolute;
+          bottom: 2rem;
+          left: 1rem;
+          width: 10rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #efefef;
+          font-family: "SimSun";
+          font-size: 12px;
+          .fa {
+            margin-right: .5rem;
+          }
+        }
+      }
+      .dec {
+        font-size: 1.3rem;
+        color: #555;
+        span {
+          &:hover {
+            cursor: pointer;
+            color: #000;
+          }
+        }
+      }
+      .listen-num {
+        position: absolute;
+        right: .1rem;
+        top: 0;
+        width: 8rem;
+        padding: .2rem 1rem;
+        color: #eee;
+        font-size: 13px;
+        text-align: right;
+        z-index: 3;
+        background-image: -webkit-linear-gradient(
+          to right, 
+          rgba(255, 255, 255, .5), 
+          rgba(80, 80, 80, .5)
+        );
+        background-image: linear-gradient(to right, 
+          rgba(255, 255, 255, 0), 
+          rgba(100, 100, 100, .5));
+        .fa {
+          margin-right: .5rem;
+          font-size: 14px;
+        }
+      }
+    }
+}

@@ -22,7 +22,7 @@
         <i class="fa fa-external-link"></i>
         <i class="fa fa-minus"></i>
         <i class="fa fa-square-o"></i>
-        <i class="fa fa-close"></i>
+        <a href="http://oyhfe.com"><i class="fa fa-close"></i></a>
       </div>
       <transition name="fade">
         <div 

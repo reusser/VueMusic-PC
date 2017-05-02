@@ -63,7 +63,8 @@
           <li v-for="(item, index) in musicList" @dblclick="changeMusic(index)">
             <span class="name">{{item.name}}</span>
             <span class="singer" 
-              @click="$router.push({name: 'singer', params:{id: item.singerId}})"
+              @click="$router.push({name: 'singer', params:{id: item.singerId}});
+              $store.commit('setShowPlay', false)"
             >{{item.singer}}</span>
             <span class="duration">{{formatDuration(~~ item.duration)}}</span>
           </li>
