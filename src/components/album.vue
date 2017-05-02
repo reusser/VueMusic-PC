@@ -52,7 +52,7 @@ export default {
         this.time = res.data.album && res.data.album.publishTime
         this.singer = res.data.album && res.data.album.artist.name
         this.singerId = res.data.album && res.data.album.artist.id
-        res.data.album.songs.forEach(item => {
+        res.data.songs.forEach(item => {
           let obj = {
             name: item.name,
             id: item.id,

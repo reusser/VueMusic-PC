@@ -9,6 +9,8 @@
           <span class="search-num">{{searchSingerNum}}</span>位歌手</p>
           <p v-if="searchType === 10">搜索<span class="keywords">"{{$route.params.keywords}}"</span>, 找到
           <span class="search-num">{{searchAlbumNum}}</span>张专辑</p>
+          <p v-if="searchType === 1000">搜索<span class="keywords">"{{$route.params.keywords}}"</span>, 找到
+          <span class="search-num">{{searchPlayListNum}}</span>个歌单</p>
         </div>
         <div class="nav">
           <span :class="searchType === 1 ? 'active' : ''" @click="searchType = 1">歌曲</span>
@@ -19,6 +21,7 @@
         <search-song :songList="searchSongList" :songTotal="searchSongsNum" @updateOffset="updateOffset" :nowPageIndex="nowPageIndex" v-if="searchType === 1"></search-song>
         <search-singer v-if="searchType === 100" :singerList="searchSingerList" :singerTotal="searchSingerNum" :nowPageIndex="nowSingerPageIndex" @updateSingerOffset="updateSingerOffset"></search-singer>
         <search-album v-if="searchType === 10" :albumList="searchAlbumList" :albumTotal="searchAlbumNum" :nowPageIndex="nowAlbumPageIndex" @updateAlbumOffset="updateAlbumOffset"></search-album>
+        <search-song-list v-if="searchType === 1000" :playList="searchPlayList" :playListTotal="searchPlayListNum" :nowPageIndex="nowPlayListPageIndex" @updatePlayListOffset="updatePlayListOffset"></search-song-list>
       </div>
     </transition>
     <transition name="fade">
@@ -34,6 +37,7 @@
 import searchSong from './searchType/searchSong.vue'
 import searchSinger from './searchType/searchSinger.vue'
 import searchAlbum from './searchType/searchAlbum.vue'
+import searchSongList from './searchType/searchSongList.vue'
 /**
  * A module that define search component
  * @exports search
@@ -44,7 +48,8 @@ export default {
   components: {
     searchSong,
     searchSinger,
-    searchAlbum
+    searchAlbum,
+    searchSongList
   },
   data() {
     return {
@@ -58,7 +63,10 @@ export default {
       nowSingerPageIndex: 1,
       searchAlbumList: [],
       searchAlbumNum: 0,
-      nowAlbumPageIndex: 1
+      nowAlbumPageIndex: 1,
+      searchPlayList: [],
+      searchPlayListNum: 0,
+      nowPlayListPageIndex: 1
     }
   },
   created() {
@@ -159,6 +167,28 @@ export default {
         }, 2000)
       })
     },
+    fetchPlayList() {
+      this.searchPlayList = []
+      this.searchType = 1000
+      this.isLoading = true
+      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
+      .then(res => {
+        this.searchPlayListNum = res.data.result && res.data.result.playlistCount
+        res.data.result.playlists.forEach(item => {
+          let obj = {
+            id: item.id,
+            name: item.name,
+            imgUrl: item.coverImgUrl,
+            creator: item.creator.nickname,
+            trackCount: item.trackCount
+          }
+          this.searchPlayList.push(obj)
+        })
+        setTimeout(() => {
+          this.isLoading = false
+        }, 2000)
+      })
+    },
     updateOffset(index) {
       if (index < 1 || index > ~~(Math.ceil(this.searchSongsNum / 30))) return
       this.nowPageIndex = index
@@ -240,6 +270,24 @@ export default {
           this.searchAlbumList.push(obj)
         })
       })
+    },
+    updatePlayListOffset(index) {
+      if (index < 1 || index > ~~(Math.ceil(this.searchPlayListNum/ 30))) return
+      this.nowPlayListPageIndex = index
+      this.searchPlayList = []
+      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=1000&offset=${(index - 1) * 30}`)
+      .then(res => {
+        res.data.result.playlists.forEach(item => {
+          let obj = {
+            id: item.id,
+            name: item.name,
+            imgUrl: item.coverImgUrl,
+            creator: item.creator.nickname,
+            trackCount: item.trackCount
+          }
+          this.searchPlayList.push(obj)
+        })
+      })
     }
   },
   watch: {
@@ -260,6 +308,10 @@ export default {
         }
         if (newVal === 10) {
           this.fetchAlbumData()
+          return
+        }
+        if (newVal === 1000) {
+          this.fetchPlayList()
           return
         }
       }

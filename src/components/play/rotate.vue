@@ -25,9 +25,9 @@ export default {
     }
   },
   mounted() {
-    this.axios.get(`http://oyhfe.com:3000/music/songDetail?ids=${this.id}`)
+    this.axios.get(`http://oyhfe.com:3000/song/detail?ids=${this.id}`)
       .then(res => {
-        this.imgUrl = res.data.songs && res.data.songs[0].album.blurPicUrl
+        this.imgUrl = res.data.songs[0] && res.data.songs[0].al.picUrl
       })
     this.$emit('getImgUrl', this.imgUrl)
   },
@@ -43,9 +43,9 @@ export default {
     id: {
       handler(newVal) {
         if (!newVal) return
-        this.axios.get(`http://oyhfe.com:3000/music/songDetail?ids=${this.id}`)
+        this.axios.get(`http://oyhfe.com:3000/song/detail?ids=${this.id}`)
         .then(res => {
-          this.imgUrl = res.data.songs[0].album.blurPicUrl
+          this.imgUrl = res.data.songs[0].al.picUrl
           this.$emit('getImgUrl', this.imgUrl)
         })
       }

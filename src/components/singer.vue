@@ -119,7 +119,7 @@ export default {
           this.hotSongsList.musicData.push(obj)
         })
       })
-      this.axios.get(`http://oyhfe.com:3000/artist_album?id=${this.$route.params.id}`)
+      this.axios.get(`http://oyhfe.com:3000/artist/album?id=${this.$route.params.id}`)
       .then(res => {
         res.data.hotAlbums.forEach(item => {
           let obj = {
@@ -131,7 +131,7 @@ export default {
           }
           this.axios.get(`http://oyhfe.com:3000/album?id=${obj.albumId}`)
           .then(res => {
-            res.data.album.songs.forEach(item => {
+            res.data.songs.forEach(item => {
               let song = {
                 name: item.name,
                 id: item.id,

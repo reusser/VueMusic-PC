@@ -1,6 +1,6 @@
 <template>
   <div class="song-list-container">
-    <div class="container-head">
+    <div class="container-head" v-if="!isLoading">
       <div class="list-logo">
         <img :src="imgUrl">
       </div>
@@ -16,17 +16,17 @@
         </p>
         <p v-if="isTag">标签:&nbsp;&nbsp;<span v-for="tag in tags" class="tags"> {{tag}} /</span></p>
         <p v-if="isDescription && (index < 2 || !isToggle)" v-for="(item, index) in description" class="description">{{item}}</p>
-        <span class="toggle-btn" @click="isToggle = false" v-if="isToggle"><i class="fa fa-angle-down"></i></span>
+        <span class="toggle-btn" @click="isToggle = false" v-if="isToggle && description.length > 2"><i class="fa fa-angle-down"></i></span>
         <div class="count">
           <span class="song-count"><i class="fa fa-music fa-fw"></i>{{songCount}}</span>
           <span class="play-count"><i class="fa fa-play-circle-o fa-fw"></i>{{formatCount(playCount)}}</span>
         </div>
       </div>
     </div>
-    <div class="nav">
+    <div class="nav" v-if="!isLoading">
       <span>歌曲列表</span>
     </div>
-    <div class="music-list">
+    <div class="music-list" v-if="!isLoading">
     <ul>
       <li class="music-list-head">
         <span class="space"></span>
@@ -41,11 +41,17 @@
         <span class="option"><i class="fa fa-heart-o fa-fw"></i><i class="fa fa-download fa-fw"></i></span>
         <span class="music-title">{{item.name}}<span class="alias" v-if="item.isAlias">{{item.alias}}</span></span>
         <span class="singer" @click="$router.push({name: 'singer', params: {id: item.singerId}})">{{item.singer}}<span class="alias" v-if="item.isSingerAlias">{{item.singerAlias}}</span></span>
-        <span class="album-name">{{item.albumName}}</span>
+        <span class="album-name" @click="$router.push({name: 'album', params: {id: item.albumId}})">{{item.albumName}}</span>
         <span class="duration">{{formatTime(~~ item.duration)}}</span>
       </li>
     </ul>
   </div>
+  <transition name="fade">
+    <div class="loading" v-if="isLoading">
+      <i class="fa fa-spinner fa-pulse"></i>
+      <p>载入中...</p>
+    </div>
+  </transition>
   </div>
 </template>
 
@@ -69,9 +75,10 @@ export default {
       isTag: false,
       isDescription: false,
       tags: [],
-      description: '',
+      description: [],
       songList: {musicData: []},
-      isToggle: true
+      isToggle: true,
+      isLoading: true
     }
   },
   created() {
@@ -79,9 +86,11 @@ export default {
   },
   methods: {
     fetchData() {
-      this.axios.get(`http://oyhfe.com:3000/playlist/detail?id=117377955`)
+      this.songlist = {musicData: []}
+      this.isLoading = true
+      this.axios.get(`http://oyhfe.com:3000/playlist/detail?id=${this.$route.params.id}`)
       .then(res => {
-        this.imgUrl    = res.data.playlist && res.data.playlist.tracks[0].al.picUrl
+        this.imgUrl    = res.data.playlist && res.data.playlist.picUrl
         this.listName  = res.data.playlist && res.data.playlist.name
         this.avatarUrl = res.data.playlist && res.data.playlist.creator.avatarUrl
         this.creator   = res.data.playlist && res.data.playlist.creator.nickname
@@ -131,6 +140,9 @@ export default {
           }
           this.songList.musicData.push(obj)
         })
+        setTimeout(() => {
+          this.isLoading = false
+        }, 2000)
       })
     },
     formatDate(time) {

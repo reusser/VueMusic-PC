@@ -140,7 +140,7 @@ export default {
   left: 0;
   right: 0;
   padding: 6rem 0;
-  background: rgba(80, 80, 80, .5);
+  background: rgba(0, 0, 0, .8);
   z-index: 9999;
   overflow: auto;
   &::-webkit-scrollbar {
