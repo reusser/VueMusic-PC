@@ -1,0 +1,184 @@
+{
+  "musicData": [
+    {
+      "name": "庆祝",
+      "id": "468513150",
+      "singer": "陈粒",
+      "singerId": "1007170",
+      "duration": "199178",
+      "albumName": "庆祝",
+      "albumId": "35313290"
+    },
+    {
+      "name": "明天何其多",
+      "id": "471411214",
+      "singer": "陈奕迅",
+      "singerId": "2116",
+      "duration": "255608",
+      "albumName": "欣赏",
+      "albumId": "35357294"
+    },
+    {
+      "name": "红昭愿",
+      "id": "460581493",
+      "singer": "流芒菌",
+      "singerId": "12293313",
+      "duration": "173217",
+      "albumName": "红昭愿",
+      "albumId": "35189170"
+    },
+    {
+      "name": "脑海浮游的你（原曲：大爱）",
+      "id": "437311664",
+      "singer": "以冬",
+      "singerId": "12065133",
+      "duration": "250515",
+      "albumName": "脑海浮游的你",
+      "albumId": "34937865"
+    },
+    {
+      "name": "圆",
+      "id": "406475388",
+      "singer": "AGA",
+      "singerId": "768208",
+      "duration": "249051",
+      "albumName": "Ginadoll",
+      "albumId": "34561161"
+    },
+    {
+      "name": "烟霞",
+      "id": "287744",
+      "singer": "容祖儿",
+      "singerId": "9269",
+      "duration": "237891",
+      "albumName": "Give Love A Break",
+      "albumId": "28561"
+    },
+    {
+      "name": "相依为命",
+      "id": "94639",
+      "singer": "陈小春",
+      "singerId": "2112",
+      "duration": "237087",
+      "albumName": "十年选",
+      "albumId": "9259"
+    },
+    {
+      "name": "剧本",
+      "id": "35678880",
+      "singer": "Fine乐团",
+      "singerId": "1160085",
+      "duration": "340422",
+      "albumName": "I'm Sorry",
+      "albumId": "3314573"
+    },
+    {
+      "name": "Light It Up (Original Mix)",
+      "id": "421423251",
+      "singer": "Calvo",
+      "singerId": "1146039",
+      "duration": "173740",
+      "albumName": "Light It Up",
+      "albumId": "34780371"
+    },
+    {
+      "name": "刚刚好",
+      "id": "415792881",
+      "singer": "薛之谦",
+      "singerId": "5781",
+      "duration": "250482",
+      "albumName": "初学者",
+      "albumId": "34780271"
+    },
+    {
+      "name": "I Am You",
+      "id": "2919622",
+      "singer": "Kim Taylor",
+      "singerId": "63943",
+      "duration": "274495",
+      "albumName": "I Am You",
+      "albumId": "294835"
+    },
+    {
+      "name": "身骑白马",
+      "id": "306664",
+      "singer": "徐佳莹",
+      "singerId": "9940",
+      "duration": "313417",
+      "albumName": "LaLa首张创作专辑",
+      "albumId": "30452"
+    },
+    {
+      "name": "迷宫",
+      "id": "4873594",
+      "singer": "王若琳",
+      "singerId": "9604",
+      "duration": "218018",
+      "albumName": "美味关系 电视原声带",
+      "albumId": "489824"
+    },
+    {
+      "name": "思念是一种病(Live) - live",
+      "id": "394485",
+      "singer": "张震岳",
+      "singerId": "6453",
+      "duration": "295000",
+      "albumName": "Live in Taipei 出发/终点站",
+      "albumId": "39066"
+    },
+    {
+      "name": "苦瓜",
+      "id": "64293",
+      "singer": "陈奕迅",
+      "singerId": "2116",
+      "duration": "278000",
+      "albumName": "Stranger Under My Skin",
+      "albumId": "6355"
+    },
+    {
+      "name": "没关系",
+      "id": "426027536",
+      "singer": "曹轩宾",
+      "singerId": "2159",
+      "duration": "282950",
+      "albumName": "亲爱的,公主病 电视原声带",
+      "albumId": "34839993"
+    },
+    {
+      "name": "蓝莲花",
+      "id": "168091",
+      "singer": "许巍",
+      "singerId": "5770",
+      "duration": "270000",
+      "albumName": "时光.漫步",
+      "albumId": "16975"
+    },
+    {
+      "name": "秀才胡同",
+      "id": "254445",
+      "singer": "李宇春",
+      "singerId": "8327",
+      "duration": "292598",
+      "albumName": "少年中国",
+      "albumId": "25425"
+    },
+    {
+      "name": "月出",
+      "id": "36117196",
+      "singer": "双笙",
+      "singerId": "12025552",
+      "duration": "239086",
+      "albumName": "月圆，笙起",
+      "albumId": "3313711"
+    },
+    {
+      "name": "独角戏",
+      "id": "307525",
+      "singer": "许茹芸",
+      "singerId": "9943",
+      "duration": "277293",
+      "albumName": "如果云知道",
+      "albumId": "30534"
+    }
+  ]
+}

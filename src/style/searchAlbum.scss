@@ -97,3 +97,17 @@
     }
   }
 }
+@media screen and (max-width: 1450px) {
+  .search-album-container {
+    .album-list {
+      li {
+        .album-name {
+          width: 30rem;
+        }
+        .singer {
+          width: 30rem;
+        }
+      }
+    }
+  }
+}

@@ -24,7 +24,9 @@ const store = new Vuex.Store({
     commendList: {'commendList': []},
     curTimeNum: 0,
     showPlay: false,
-    showAbout: false
+    showAbout: false,
+    showLogin: false,
+    day: {'musicData': []}
   },
   mutations: {
     setMusicList: (state, playload) => {
@@ -66,6 +68,12 @@ const store = new Vuex.Store({
     },
     setShowAbout: (state, playload) => {
       state.showAbout = playload
+    },
+    setShowLogin: (state, playload) => {
+      state.showLogin = playload
+    },
+    setDay: (state, playload) => {
+      state.day = playload
     } 
   },
   actions: {
@@ -83,6 +91,14 @@ const store = new Vuex.Store({
           .then(res => {
             resolve(res.data.commendList)
           })
+      })
+    },
+    getInitDay() {
+      return new Promise((resolve, reject) => {
+        Vue.axios.get('http://oyhfe.com:666/day')
+        .then(res => {
+          resolve(res.data.day)
+        })
       })
     }
   }

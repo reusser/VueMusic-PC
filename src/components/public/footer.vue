@@ -21,7 +21,7 @@
       <v-slider
         :value="curTimeNum"
         :totalVal="tolTimeNum"
-        :width="950"
+        :width="width"
         @skip="skip"
         @move="move"></v-slider>
       <span class="time">{{tolTime}}</span>
@@ -97,6 +97,7 @@ import vSlider from '../slider.vue'
         curTimeNum: 0,
         tolTimeNum: 0,
         volume: 1,
+        width: 950,
         //timer: {},
         isVolumeOff: false,
         saveVolume: 1,
@@ -142,6 +143,7 @@ import vSlider from '../slider.vue'
         }
         this.showDialog = false
       }, false)
+      this.width = document.body.clientWidth < 1450 ? 750 : 950
     },
     computed: {
       playState() {

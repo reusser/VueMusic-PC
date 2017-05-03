@@ -90,3 +90,15 @@
     }
   }
 }
+@media screen and (max-width: 1450px) {
+  .new-song-container {
+    .new-song {
+      width: 90rem;
+      li {
+        .song-name {
+          width: 30rem;
+        }
+      }
+    }
+  }
+}

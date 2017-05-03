@@ -58,3 +58,14 @@
     }
   }
 }
+@media screen and (max-width: 1450px) {
+  .hot-singer-container {
+    .singers {
+      width: 70rem;
+      img {
+        width: 10rem;
+        height: 10rem;
+      }
+    }
+  }
+}

@@ -70,10 +70,10 @@
               <li><i class="fa fa-usb fa-fw"></i><span>导入歌单</span>
                 <span><span class="gt">&gt;</span></span> 
               </li>
-              <li v-if="user.isLogin" @click="signOut"><i class="fa fa-power-off fa-fw"></i><span>退出登录</span>
+              <!--<li v-if="user.isLogin" @click="signOut"><i class="fa fa-power-off fa-fw"></i><span>退出登录</span>
                 <span><span class="gt">&gt;</span></span>      
-              </li>
-              <li v-if="!user.isLogin" @click="signIn"><i class="fa fa-sign-in fa-fw"></i><span>登录</span>
+              </li>-->
+              <li @click="$store.commit('setShowAbout', true)"><i class="fa fa-sign-in fa-fw"></i><span>关于我</span>
                 <span><span class="gt">&gt;</span></span>      
               </li>
             </ul>

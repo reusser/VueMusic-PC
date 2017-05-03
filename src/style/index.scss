@@ -76,10 +76,6 @@
           font-size: 8rem;
           color: #c62f2f;
         }
-        .copywrite {
-          line-height: 3.2rem;
-          z-index: 2;
-        }
         .show-copywrite {
           transform: translateY(0);
         }
@@ -190,6 +186,35 @@
       }
       .hide-listen-num {
         display: none;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1450px) {
+  .index-container {
+    .recommend-list {
+      >p {
+        width: 85rem;
+      }
+      ul {
+        width: 85rem;
+        li {
+          width: 15rem;
+          .item-img {
+            height: 15rem;
+          }
+          .copywrite {
+            width: 13rem;
+            >div {
+              width: 13rem;
+            }
+          }
+        }
+        .day-commend {
+          .content {
+            height: 15rem;
+          }
+        }
       }
     }
   }

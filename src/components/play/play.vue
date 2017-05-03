@@ -180,7 +180,7 @@ export default {
       if (index < 1 || index > ~~(Math.ceil(this.commentTotal / 20))) return
       this.nowPageIndex = index
       this.commentList = []
-      this.axios.get(`http://oyhfe.com:3000/comment/music?id=${this.id}&offset=${(this.nowPageIndex - 1) * 20}`)
+      this.axios.get(`http://localhost:3000/comment/music?id=${this.id}&offset=${(this.nowPageIndex - 1) * 20}`)
       .then(res => {
         this.commentTotal = res.data.total
         res.data.comments.forEach(item => {
@@ -229,7 +229,7 @@ export default {
         })
         .then(() => {
           setTimeout(()=> {
-            this.axios.get(`http://oyhfe.com:3000/comment/music?id=${newVal}`)
+            this.axios.get(`http://localhost:3000/comment/music?id=${newVal}`)
             .then(res => {
               this.commentTotal = res.data.total
               res.data.hotComments.slice(0, 10).forEach(item => {

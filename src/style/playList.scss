@@ -110,3 +110,16 @@
       }
     }
 }
+@media screen and (max-width: 1450px) {
+  .playlist-container {
+    .playlists {
+      width: 90rem;
+      li {
+        width: 16rem;
+        .item-img {
+          height: 16rem;
+        }
+      }
+    }
+  }
+}

@@ -9,14 +9,14 @@
     </ul>
     <v-banner
       :imgs="[
-        'http://p4.music.126.net/a84glhVWa5P9XzZkpPNuHQ==/19042441881532433.jpg',
-        'http://p4.music.126.net/aEzLASFy9UnIkIpdMm4EtQ==/19023750183861398.jpg',
-        'http://p3.music.126.net/EubXT4UhtAy08gjJR1B_1Q==/19104014532698868.jpg',
-        'http://p4.music.126.net/KE__Tj0gIz5ZWbZVDNhp9w==/19104014532705101.jpg',
-        'http://p3.music.126.net/uEwDB-sZeivV2S0jiN5U_A==/19021551160569909.jpg',
-        'http://p4.music.126.net/zBiNdjsk9APUYSjAgRHatQ==/19104014532698871.jpg',
-        'http://p4.music.126.net/B356D3Hd0MFTEJZLTUeoPQ==/18711488883355465.jpg',
-        'http://p3.music.126.net/dHBj9OSyhvDx8WpHXCe7Bg==/18958878997807302.jpg'
+        'http://p3.music.126.net/09hujI6_LSJD6DWK02qXwQ==/18964376555989719.jpg',
+        'http://p4.music.126.net/j_cH-yjz5tTLIDFmz4sSiQ==/18833534674063637.jpg',
+        'http://p4.music.126.net/I1zKnPl4g9snKbAA5zJi3Q==/18623527953173535.jpg',
+        'http://p4.music.126.net/x9KxmTxNEXHQJS9n-oWRLw==/18623527953173527.jpg',
+        'http://p3.music.126.net/U3y3VH4_3cX8pXECLFsHjA==/18624627464801303.jpg',
+        'http://p4.music.126.net/F7yr2uUq982rTIWlwvaThg==/18964376555989729.jpg',
+        'http://p4.music.126.net/qADzamZDC3c5whBibC_rAQ==/18906102439712983.jpg',
+        'http://p3.music.126.net/tw17cN9NJfa5FmFDyS0A_g==/18624627464801294.jpg'
       ]"
     ></v-banner>
     <div class="recommend-list">
@@ -25,22 +25,24 @@
         <li class="day-commend">
           <div class="copywrite" :class="{'show-copywrite': -1 === showIndex}"
             @mouseover="showCopywrite(-1)"
-            @mouseout="showCopywrite(-2)">
+            @mouseout="showCopywrite(-2)"
+            @click="$router.push({name: 'day'})">
             根据您的音乐口味生成每日更新
           </div>
-          <div class="content" @mouseover="showCopywrite(-1)" @mouseout="showCopywrite(-2)">
+          <div class="content" @mouseover="showCopywrite(-1)" @mouseout="showCopywrite(-2)"  @click="$router.push({name: 'day'})">
             <div>
               <span class="week">{{week}}</span><br>
               <span class="day">{{day}}</span>
             </div>
           </div>
-          <div class="dec"><span>每日歌曲推荐</span></div>
+          <div class="dec" @click="$router.push({name: 'day'})"><span>每日歌曲推荐</span></div>
         </li>
         <template v-for="(item, index) in commendList">
           <li class="commend-item">
             <div class="copywrite" :class="{'show-copywrite' : index === showIndex}"
               @mouseover="showCopywrite(index)"
-              @mouseout="showCopywrite(-2)">
+              @mouseout="showCopywrite(-2)"
+              @click="$router.push({name: 'songList', params: {id: item.id}})">
               <div>{{item.copywrite}}</div>
             </div>
             <div class="listen-num" :class="{'hide-listen-num': index === showIndex}">
@@ -54,11 +56,12 @@
               }"
               @mouseover="showCopywrite(index)"
               @mouseout="showCopywrite(-2)"
+              @click="$router.push({name: 'songList', params: {id: item.id}})"
             >
-              <div class="play-btn" :class="{'show-play': index === showIndex}">
+              <div class="play-btn" :class="{'show-play': index === showIndex}" @click="$router.push({name: 'songList', params: {id: item.id}})">
               </div>
             </div>
-            <div class="dec">
+            <div class="dec" @click="$router.push({name: 'songList', params: {id: item.id}})">
               <span>{{item.name}}</span>
             </div>
           </li>

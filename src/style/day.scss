@@ -1,9 +1,58 @@
+.container-head {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2rem 3rem;
+  flex-flow: row nowrap;
+  .list-logo {
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    margin-right: 2rem;
+    text-align: center;
+    background-color: #fff;
+    border: 2px solid #ced6d7;
+    div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      .week {
+          font-size: 2rem;
+          color: #6c6c6c;
+        }
+        .day {
+          font-size: 8rem;
+          color: #c62f2f;
+        }
+    }
+  }
+  .detail {
+    flex-grow: 1;
+    margin-left: 2rem;
+    p {
+      margin-bottom: 2rem;
+    }
+    .list-name {
+      margin-left: 1rem;
+      font-size: 24px;
+      color: #666;
+      vertical-align: middle;
+    }
+    .description {
+      color: #666;
+      font-size: 13px;
+    }
+  }
+}
 .music-list {
   width: 100%;
   margin-bottom: 5rem;
   li {
     height: 3rem;
     line-height: 3rem;
+    cursor: default;
     &:hover {
       background-color: #ecedee;
     }
@@ -48,6 +97,7 @@
     .option {
       width: 5rem;
       color: #777;
+      vertical-align: top;
     }
     .index {
       text-align: right;
@@ -63,10 +113,22 @@
     .album-name {
       width: 35rem;
       color: #777;
+      cursor: pointer;
     }
     .duration {
       width: 5rem;
       color: #777;
+      vertical-align: top;
+    }
+    .music-title,
+    .album-name,
+    .singer {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .alias {
+      color: #888;
     }
     li:nth-child(odd) {
       background-color: #f5f5f7;
@@ -75,6 +137,27 @@
       }
     }
   }
+}
+.loading {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5rem;
+    text-align: center;
+    > p {
+      margin-top: 3rem;
+    }
+    .fa {
+      color: #c62f2f;
+      font-size: 30px;
+    }
+  }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 @media screen and (max-width: 1450px) {
   .music-list {

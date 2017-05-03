@@ -216,3 +216,32 @@
 .fade-enter, .fade-leave-active {
   opacity: 0
 }
+@media screen and (max-width: 1450px) {
+  .music-list {
+    .music-list-head {
+      .music-title {
+        width: 30rem;
+      }
+      .singer {
+        width: 20rem;
+      }
+      .album-name {
+        width: 25rem;
+      }
+    }
+    ul {
+      .music-title {
+        width: 30rem;
+      }
+      .singer {
+        width: 20rem;
+      }
+      .album-name {
+        width: 25rem;
+      }
+      .duration {
+        width: 5rem;
+      }
+    }
+  }
+}

@@ -125,3 +125,18 @@
     }
   }
 }
+@media screen and (max-width: 1450px) {
+  .banner-container {
+    width: 80rem;
+    .img-container {
+      li {
+        width: 40rem;
+        height: 20rem;
+      }
+      .center {
+          width: 40rem;
+          height: 20rem;
+        }
+    }
+  }
+}

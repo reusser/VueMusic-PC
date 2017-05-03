@@ -77,7 +77,7 @@ export default {
       this.searchSongList = {musicData: []}
       this.isLoading = true
       this.searchType = 1
-      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}`)
+      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}`)
       .then(res => {
         this.searchSongsNum = res.data.result && res.data.result.songCount
         res.data.result.songs.forEach(item => {
@@ -108,7 +108,7 @@ export default {
       this.searchSingerList = []
       this.isLoading = true
       this.searchType = 100
-      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
+      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
       .then(res => {
         this.searchSingerNum = res.data.result && res.data.result.artistCount
         res.data.result.artists.forEach(item => {
@@ -135,7 +135,7 @@ export default {
       this.searchAlbumList = []
       this.isLoading = true
       this.searchType = 10
-      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
+      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
       .then(res => {
         this.searchAlbumNum = res.data.result && res.data.result.albumCount
         res.data.result.albums.forEach(item => {
@@ -171,7 +171,7 @@ export default {
       this.searchPlayList = []
       this.searchType = 1000
       this.isLoading = true
-      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
+      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}&type=${this.searchType}`)
       .then(res => {
         this.searchPlayListNum = res.data.result && res.data.result.playlistCount
         res.data.result.playlists.forEach(item => {
@@ -193,7 +193,7 @@ export default {
       if (index < 1 || index > ~~(Math.ceil(this.searchSongsNum / 30))) return
       this.nowPageIndex = index
       this.searchSongList = {musicData: []}
-      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&offset=${(index - 1) * 30}`)
+      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}&offset=${(index - 1) * 30}`)
       .then(res => {
         res.data.result.songs.forEach(item => {
           let obj = {
@@ -220,7 +220,7 @@ export default {
       if (index < 1 || index > ~~(Math.ceil(this.searchSingerNum / 30))) return
       this.nowSingerPageIndex = index
       this.searchSingerList = []
-      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=100&offset=${(index - 1) * 30}`)
+      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}&type=100&offset=${(index - 1) * 30}`)
       .then(res => {
         res.data.result.artists.forEach(item => {
           let obj = {
@@ -243,7 +243,7 @@ export default {
       if (index < 1 || index > ~~(Math.ceil(this.searchAlbumNum / 30))) return
       this.nowAlbumPageIndex = index
       this.searchAlbumList = []
-      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=10&offset=${(index - 1) * 30}`)
+      this.axios.get(`http://localhost:3000/search?keywords=${this.$route.params.keywords}&type=10&offset=${(index - 1) * 30}`)
       .then(res => {
         res.data.result.albums.forEach(item => {
           let obj = {
@@ -275,7 +275,7 @@ export default {
       if (index < 1 || index > ~~(Math.ceil(this.searchPlayListNum/ 30))) return
       this.nowPlayListPageIndex = index
       this.searchPlayList = []
-      this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.$route.params.keywords}&type=1000&offset=${(index - 1) * 30}`)
+      this.axios.get(`http://localhost/search?keywords=${this.$route.params.keywords}&type=1000&offset=${(index - 1) * 30}`)
       .then(res => {
         res.data.result.playlists.forEach(item => {
           let obj = {

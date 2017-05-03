@@ -157,3 +157,22 @@
     }
   }
 }
+@media screen and (max-width: 1450px) {
+  .singer-container {
+    .albums {
+      .album-logo {
+        img {
+          width: 16rem;
+          height: 16rem;
+        }
+      }
+      ul {
+        li {
+          .song-name {
+            width: 60rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -86,9 +86,9 @@ export default {
   },
   methods: {
     fetchData() {
-      this.songlist = {musicData: []}
+      this.songList = {musicData: []}
       this.isLoading = true
-      this.axios.get(`http://oyhfe.com:3000/playlist/detail?id=${this.$route.params.id}`)
+      this.axios.get(`http://localhost:3000/playlist/detail?id=${this.$route.params.id}`)
       .then(res => {
         this.imgUrl    = res.data.playlist && res.data.playlist.picUrl
         this.listName  = res.data.playlist && res.data.playlist.name

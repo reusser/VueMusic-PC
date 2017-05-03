@@ -6,6 +6,7 @@
     <router-view class="router-view" v-if="!isShowPlay"></router-view>
     <v-footer></v-footer>
     <about></about>
+    <login></login>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import storage from './storage.js'
 import vSidebar from './components/public/sidebar.vue'
 import vPlay from './components/play/play.vue'
 import about from './components/about.vue'
+import login from './components/login.vue'
 
 export default {
   name: 'app',
@@ -24,7 +26,8 @@ export default {
     vFooter,
     vSidebar,
     vPlay,
-    about
+    about,
+    login
   },
   computed: {
     isShowPlay() {

@@ -21,20 +21,20 @@
       >创建的歌单<i class="fa"
                   :class="isToggleCreateList ? 'fa-angle-right' : 'fa-angle-down'"></i></div>
       <ul v-if="!isToggleCreateList">
-        <li><i class="fa fa-heart-o fa-fw"></i>我喜欢的音乐</li>
-        <li><i class="fa fa-file-audio-o fa-fw"></i>敲代码时听的歌</li>
-        <li><i class="fa fa-file-audio-o fa-fw"></i>1</li>
+        <li @click="$router.push({name: 'songList', params:{id: '169815571'}})"><i class="fa fa-heart-o fa-fw"></i>我喜欢的音乐</li>
+        <li @click="$router.push({name: 'songList', params:{id: '471972418'}})"><i class="fa fa-file-audio-o fa-fw"></i>敲代码时听的歌</li>
+        <li @click="$router.push({name: 'songList', params:{id: '404264863'}})"><i class="fa fa-file-audio-o fa-fw"></i>1</li>
       </ul>
       <div class="sidebar-head"
         @click="isToggleCollectList = !isToggleCollectList"
       >收藏的歌单<i class="fa"
                   :class="isToggleCollectList ? 'fa-angle-right' : 'fa-angle-down'"></i></div>
       <ul v-if="!isToggleCollectList">
-        <li><i class="fa fa-file-audio-o fa-fw"></i>周傲娇哼喜欢的音乐</li>
-        <li><i class="fa fa-file-audio-o fa-fw"></i>2016年五月最新热歌TOP50</li>
-        <li><i class="fa fa-file-audio-o fa-fw"></i>2016年五月最新热歌TOP50</li>
-        <li><i class="fa fa-file-audio-o fa-fw"></i>2016年五月最新热歌TOP50</li>
-        <li><i class="fa fa-file-audio-o fa-fw"></i>2016年五月最新热歌TOP50</li>
+        <li @click="$router.push({name: 'songList', params:{id: '327106241'}})"><i class="fa fa-file-audio-o fa-fw"></i>周傲娇哼喜欢的音乐</li>
+        <li @click="$router.push({name: 'songList', params:{id: '699672611'}})"><i class="fa fa-file-audio-o fa-fw"></i>前端金曲</li>
+        <li @click="$router.push({name: 'songList', params:{id: '545031614'}})"><i class="fa fa-file-audio-o fa-fw"></i>年度盘点 | 2016年华语优质影视歌曲</li>
+        <li @click="$router.push({name: 'songList', params:{id: '311206484'}})"><i class="fa fa-file-audio-o fa-fw"></i>时光怎么让爱笑的人哭了</li>
+        <li @click="$router.push({name: 'songList', params:{id: '368529707'}})"><i class="fa fa-file-audio-o fa-fw"></i>前奏直接秒杀的纯音乐</li>
       </ul>
     </div> 
     <div class="preview" v-if="showMiniAudio">
@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted() {
-    this.axios.get(`http://oyhfe.com:3000/search?keywords=${this.songName}`)
+    this.axios.get(`http://localhost:3000/search?keywords=${this.songName}`)
     .then(res => {
       this.imgUrl = res.data.result && res.data.result.songs[0].album.blurPicUrl
     })
@@ -93,7 +93,7 @@ export default {
     songName: {
       handler(newVal) {
         if (!newVal) return
-        this.axios.get(`http://oyhfe.com:3000/search?keywords=${newVal}`)
+        this.axios.get(`http://localhost:3000/search?keywords=${newVal}`)
         .then(res => {
           this.imgUrl = res.data.result.songs[0].album.blurPicUrl
         })

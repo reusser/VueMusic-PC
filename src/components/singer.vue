@@ -114,7 +114,7 @@ export default {
             id: item.id,
             singer: this.singer,
             singerId: this.singerId,
-            duration: item.duration
+            duration: item.dt
           }
           this.hotSongsList.musicData.push(obj)
         })
@@ -137,7 +137,7 @@ export default {
                 id: item.id,
                 singer: this.singer,
                 singerId: this.singerId,
-                duration: item.duration
+                duration: item.dt
               }
               obj.musicData.musicData.push(song)
             })
