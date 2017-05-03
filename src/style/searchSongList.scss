@@ -99,3 +99,13 @@
     }
   }
 }
+@media screen and (max-width: 1450px) {
+  .search-song-list-container {
+    .playlist {
+      list-style: none;
+      .playlist-name {
+        width: 40rem;
+      }
+    }
+  }
+}

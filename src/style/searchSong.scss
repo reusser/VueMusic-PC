@@ -146,3 +146,31 @@
       }
     }
   }
+  @media screen and (max-width: 1450px) {
+    .search-list-head {
+      .music-title {
+        width: 30rem;
+      }
+    .singer {
+      width: 20rem;
+    }
+    .album-name {
+      width: 25rem;
+    }
+  }
+  .songs {
+    .music-title {
+      width: 30rem;
+    }
+    .singer {
+      width: 20rem;
+      color: #777;
+      cursor: pointer;
+    }
+    .album-name {
+      width: 25rem;
+      color: #777;
+      cursor: pointer;
+    }
+  }
+}
