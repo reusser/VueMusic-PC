@@ -126,3 +126,33 @@
     }
   }
 }
+#black {
+  .sidebar-head {
+    position: relative;
+    padding-left: 1rem;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    font-size: 1.3rem;
+    text-align: left;
+    color: #898989;
+    cursor: pointer;
+    .fa {
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  ul {
+    li {
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  .preview {
+    border-top: solid 1px #22252b;
+    .info {
+      color: #c8c9d0;
+    }
+  }
+}

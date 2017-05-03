@@ -25,7 +25,7 @@ export default {
     }
   },
   mounted() {
-    this.axios.get(`http://oyhfe.com:3000/song/detail?ids=${this.id}`)
+    this.axios.get(`http://localhost:3000/song/detail?ids=${this.id}`)
       .then(res => {
         this.imgUrl = res.data.songs[0] && res.data.songs[0].al.picUrl
       })
@@ -43,7 +43,7 @@ export default {
     id: {
       handler(newVal) {
         if (!newVal) return
-        this.axios.get(`http://oyhfe.com:3000/song/detail?ids=${this.id}`)
+        this.axios.get(`http://localhost:3000/song/detail?ids=${this.id}`)
         .then(res => {
           this.imgUrl = res.data.songs[0].al.picUrl
           this.$emit('getImgUrl', this.imgUrl)

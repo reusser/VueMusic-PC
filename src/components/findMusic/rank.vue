@@ -65,24 +65,24 @@ export default {
     this.netEaseRank = []
     this.isLoading = true
     this.rank = []
-    this.axios.get(`http://oyhfe.com:3000/top/list?idx=3`)
+    this.axios.get(`http://localhost:3000/top/list?idx=3`)
     .then(res => {
       this.fetchData(res)
     })
     .then(() => {
-      this.axios.get(`http://oyhfe.com:3000/top/list?idx=0`)
+      this.axios.get(`http://localhost:3000/top/list?idx=0`)
       .then(res => {
         this.fetchData(res)
       })
     })
     .then(() => {
-      this.axios.get(`http://oyhfe.com:3000/top/list?idx=2`)
+      this.axios.get(`http://localhost:3000/top/list?idx=2`)
       .then(res => {
         this.fetchData(res)
       })
     })
     .then(() => {
-      this.axios.get(`http://oyhfe.com:3000/top/list?idx=1`)
+      this.axios.get(`http://localhost:3000/top/list?idx=1`)
       .then(res => {
         this.fetchData(res)
       })
@@ -92,7 +92,7 @@ export default {
     })
     .then(() => {
       for (let i = 4; i < 22; i++) {
-        this.axios.get(`http://oyhfe.com:3000/top/list?idx=${i}`)
+        this.axios.get(`http://localhost:3000/top/list?idx=${i}`)
         .then(res => {
           this.fetchOther(res)
         })

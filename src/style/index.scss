@@ -219,3 +219,35 @@
     }
   }
 }
+#black {
+  .find-music-nav {
+    border-bottom: 1px solid #202226;
+    li {
+      color: #818284;
+      &:hover {
+        color: #c8c9d0;
+      }
+    }
+    .active {
+      color: #c8c9d0;
+      border-bottom: 3px solid #5c5e61;
+    }
+  }
+  .recommend-list {
+    >p {
+      color: #cbccd3;
+      border-bottom: 2px solid #22252a;
+    }
+    .item-img {
+      border: 2px solid #161830;
+    }
+  }
+  .dec {
+    color: #dcdde4;
+    span {
+      &:hover {
+        color: #dcdde4;
+      }
+    }
+  }
+}

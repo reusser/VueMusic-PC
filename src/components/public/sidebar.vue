@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" :id="theme">
     <div class="sidebar-list">
       <div class="sidebar-head">推荐</div>
       <ul>
@@ -87,6 +87,9 @@ export default {
     },
     showMiniAudio() {
       return this.$store.state.showMiniAudio
+    },
+    theme() {
+      return this.$store.state.theme
     }
   },
   watch: {

@@ -238,3 +238,62 @@
     }
   }
 }
+#black {
+  background-color: #222225;
+  border-top: 1px solid #232327;
+  .footer-left {
+    >span {
+      background-color: #3c3c3f;
+    }
+  }
+  .value,
+  .fa {
+    &:hover {
+      color: #fff;
+    }
+  }
+  .list-num {
+    color: #cacbd2;
+    background-color: #2c2c2f;
+  }
+  .list-dialog {
+    background-color: #282a2f;
+    border: 2px solid #282a2f;
+  }
+  .list-head {
+    background-color: #282a2f;
+  }
+  .info {
+    color: #7a7a7d;
+    background-color: #2d2f33;
+    > span:last-child:hover {
+      color: #fff;
+    }
+  }
+  li {
+    .name{
+      color: #d7d8df;
+    }
+    background-color: #2d2f33;
+    &:hover {
+      .name,
+      .singer,
+      .duration {
+        color: #d7d8df;
+      }
+      background-color: #333539;
+    }
+  }
+  li:nth-child(even) {
+    background-color: #313337;
+    &:hover{
+      color: #d7d8df;
+      background-color: #333539;
+    }
+  }
+  .no-song {
+    span {
+      color: #cccdd4;
+    }
+  }
+}

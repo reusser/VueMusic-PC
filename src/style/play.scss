@@ -278,3 +278,84 @@
 .fade-enter, .fade-leave-active {
   opacity: 0
 }
+#black {
+  .btn-box {
+    button {
+      color: #616267;
+      border: 1px solid #2c2c31;
+      background-color: #2c2c31;
+      .fa {
+        color: #48494c;
+      }
+      &:hover {
+        background-color: #323338;
+        .fa {
+          color: #aaabaf;
+        }
+        .fa-heart {
+          color: #c62f2f;
+        }
+      }
+      .fa-heart {
+        color: #c62f2f;
+      }
+    }
+  }
+  .comment-head {
+    color: #c5c6cc;
+    border-bottom: 1px solid #1f2227;
+  }
+  .hot-comment-head,
+  .new-comment-head {
+    border-bottom: 1px solid #1f2227;
+  }
+  .comment-box {
+    color: #b2b4ba;
+    border-bottom: 1px solid #1f2227;
+  }
+  .replied {
+    background-color: #1c1e23;
+  }
+  .content-footer {
+    color: #48494d;
+    div:nth-of-type(2) {
+      span:nth-of-type(2) {
+        border-left: 2px solid #1f2227;
+        border-right: 2px solid #1f2227;
+      }
+    }
+  }
+  .page {
+    ul {
+      .fa {
+        color: #7a7b7d;
+      }
+      li {
+        color: #a4a4a4;
+        &:hover {
+          color: #fff;
+          border: 1px solid #1f2227;
+          background-color: #282b32;
+        }
+      }
+      .pre-btn,
+      .next-btn {
+        border: 2px solid #1f2227;
+        &:hover {
+          border: 2px solid #1f2227;
+        }
+      }
+      .active {
+        color: #c62f2f;
+        &:hover {
+          color: #c62f2f;
+        }
+      }
+    }
+  }
+  .loading {
+    p {
+      color: #a4a4a4;
+    }
+  }
+}

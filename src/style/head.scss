@@ -396,3 +396,139 @@ $netRed: #c62f2f;
     }
   }
 }
+#black {
+  background-color: #212124;
+  label {
+    background-color: #161618;
+    input {
+      background-color: #161618;
+      &::placeholder {
+        color: #4f4f51;
+      }
+    }
+  }
+  .fa-search {
+    color: #4e4e50;
+    &:hover {
+      color: #fff;
+    }
+  }
+  .active {
+    color: #fff;
+  }
+  .right {
+    .settings {
+      border-right: .2rem solid #2d2f33;
+    }
+    #username {
+      color: #adafb2;
+      &:after {
+        border-top-color: #adafb2;
+      }
+      &:hover {
+        color: #fff;
+        &:after {
+          border-top-color: #fff;
+        }
+      }
+    }
+    .fa-yelp,
+    .fa-envelope-o,
+    .fa-cog {
+      color: #adafb2;
+      &:hover {
+        color: #fff;
+      }
+    }
+    .tools {
+      color: #adafb2;
+      a {
+        color: #adafb2;
+      }
+      .fa {
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .head-dialog {
+    background-color: #2d2f33;
+    &:before {
+      border-bottom-color: #2d2f33;
+    }
+    .user-option {
+      .avatar {
+        img {
+          border: .2rem solid #34363a;
+        }
+        .avatar-name {
+          color: #c6c8ce;
+        }
+        .sign {
+          background-color: #2d2f33;
+          border: 2px solid #3c3d41;
+          color: #828386;
+          &:hover {
+            background-color: #414347;
+            color: #d2d2d2;
+          }
+        }
+      }
+      .social {
+        li {
+          border-right: 1px solid #35373b;
+          p:nth-of-type(1) {
+            color: #e2e2e2;
+          }
+          &:hover p:nth-of-type(1) {
+            color: #e2e2e2;
+          }
+          p:nth-of-type(2) {
+            color: #7b7b7e;
+          }
+          &:hover p:nth-of-type(2) {
+            color: #fff;
+          }
+        }
+      }
+    }
+    .msg {
+      li {
+        &:nth-of-type(1),
+        &:nth-of-type(4),
+        &:last-child {
+          border-top: 2px solid #36383c;
+        }
+        &:last-child {
+          height: 6rem;
+          line-height: 6rem;
+        }
+        &:hover {
+          background-color: #393b3f;
+        }
+        span:nth-of-type(1) {
+          color: #cbcdd3;
+        }
+        span:nth-of-type(2) {
+          color: #4a4c50;
+        }
+      }
+      .fa {
+        color: #5d5e63;
+      }
+      .gt {
+        color: #4a4c50;
+      }
+    }
+    .theme-option {
+      .theme-head {
+        color: #d7d8df;
+        border-bottom: 1px solid #37393d;
+        &:after {
+          background-color: #5f5f63;
+        }
+      }    
+    }
+  }
+}

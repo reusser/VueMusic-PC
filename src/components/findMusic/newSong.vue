@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     this.list = {musicData: []}
-    this.axios.get(`http://oyhfe.com:3000/personalized/newsong`)
+    this.axios.get(`http://localhost:3000/personalized/newsong`)
     .then(res => {
       res.data.result.forEach(item => {
         let obj = {

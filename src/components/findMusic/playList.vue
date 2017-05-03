@@ -41,7 +41,7 @@ export default {
   },
   mounted() {
     this.playlists = []
-    this.axios.get(`http://oyhfe.com:3000/top/playlist`)
+    this.axios.get(`http://localhost:3000/top/playlist`)
     .then(res => {
       res.data.playlists.forEach(item => {
         let obj = {

@@ -6,6 +6,7 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vuex from 'vuex'
+import storage from './storage.js'
 
 Vue.config.productionTip = false
 
@@ -26,11 +27,13 @@ const store = new Vuex.Store({
     showPlay: false,
     showAbout: false,
     showLogin: false,
-    day: {'musicData': []}
+    day: {'musicData': []},
+    theme: ''
   },
   mutations: {
     setMusicList: (state, playload) => {
       state.musicList = playload
+      storage.saveMusic(playload)
     },
     play: state => {
       state.isPlaying = true
@@ -41,6 +44,7 @@ const store = new Vuex.Store({
     },
     clear: state => {
       state.musicList = {'musicData':[]}
+      storage.saveMusic({'musicData':[]})
     },
     setPlayIndex: (state, playload) => {
       state.nowPlayIndex = playload
@@ -65,6 +69,7 @@ const store = new Vuex.Store({
       }
       state.musicList.musicData.splice(state.nowPlayIndex + 1, 0, playload)
       state.nowPlayIndex = state.nowPlayIndex + 1
+      storage.saveMusic(playload)
     },
     setShowAbout: (state, playload) => {
       state.showAbout = playload
@@ -74,6 +79,9 @@ const store = new Vuex.Store({
     },
     setDay: (state, playload) => {
       state.day = playload
+    },
+    setTheme: (state, playload) => {
+      state.theme = playload
     } 
   },
   actions: {

@@ -31,7 +31,7 @@ export default {
   },
   mounted() {
     this.hotSingerList = []
-    this.axios.get(`http://oyhfe.com:3000/top/artists?limit=100`)
+    this.axios.get(`http://localhost:3000/top/artists?limit=100`)
     .then(res => {
       res.data.artists.forEach(item => {
         let obj = {

@@ -3,7 +3,7 @@
     <v-head></v-head>
     <v-sidebar></v-sidebar>
     <v-play></v-play>
-    <router-view class="router-view" v-if="!isShowPlay"></router-view>
+    <router-view class="router-view" v-if="!isShowPlay" :id="theme"></router-view>
     <v-footer></v-footer>
     <about></about>
     <login></login>
@@ -32,6 +32,9 @@ export default {
   computed: {
     isShowPlay() {
       return this.$store.state.showPlay
+    },
+    theme() {
+      return this.$store.state.theme
     }
   }
 }

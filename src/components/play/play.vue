@@ -1,5 +1,5 @@
 <template>
-  <div class="play-container" :class="isShow ? 'show' : 'hide'">
+  <div class="play-container" :class="isShow ? 'show' : 'hide'" :id="theme">
     <div class="shadow" :style="{'background': `url(${imgUrl})`, 'background-size': 'cover'} ">
     </div>
     <div class="play-box">
@@ -162,6 +162,9 @@ export default {
       if (this.nowPageIndex < 6) return [2, 3, 4, 5, 6, 7, 8]
       if (this.nowPageIndex > total - 5) return [total - 7, total - 6, total - 5, total - 4, total - 3, total - 2, total - 1]
       return [this.nowPageIndex - 3, this.nowPageIndex - 2, this.nowPageIndex - 1, this.nowPageIndex, this.nowPageIndex + 1, this.nowPageIndex + 2, this.nowPageIndex + 3]
+    },
+    theme() {
+      return this.$store.state.theme
     }
   },
   methods: {
@@ -211,13 +214,13 @@ export default {
         this.commentList = []
         this.hotCommentList = []
         this.nowPageIndex = 1
-        this.axios.get(`http://oyhfe.com:3000/song/detail?ids=${newVal}`)
+        this.axios.get(`http://localhost:3000/song/detail?ids=${newVal}`)
         .then(res => {
           this.albumName = res.data.songs && res.data.songs[0].al.name
           this.albumId = res.data.songs && res.data.songs[0].al.id
         })
         .then(() => {
-          this.axios.get(`http://oyhfe.com:3000/lyric?id=${newVal}`)
+          this.axios.get(`http://localhost:3000/lyric?id=${newVal}`)
           .then(res => {
             if (res.data.nolyric === true) {
               this.noLyric = true

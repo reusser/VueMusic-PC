@@ -1,5 +1,5 @@
 <template>
-  <div class="music-head">
+  <div class="music-head" :id="theme">
     <img src="http://on99ebnkk.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170413213632.png" @click="$store.commit('setShowPlay', false); $router.push({path: '/'})">
     <label>
       <input type="text"
@@ -84,14 +84,14 @@
               主题
             </p>
             <ul class="line-one">
-              <li><span>酷炫黑</span></li>
-              <li><span>官方红</span></li>
-              <li><span>可爱粉</span></li>
+              <li @click="$store.commit('setTheme', 'black')"><span>酷炫黑</span></li>
+              <li @click="$store.commit('setTheme', 'red')"><span>官方红</span></li>
+              <li @click="$store.commit('setTheme', 'pink')"><span>可爱粉</span></li>
             </ul>
             <ul class="line-two">
-              <li><span>天际蓝</span></li>
-              <li><span>清新绿</span></li>
-              <li><span>土豪金</span></li>
+              <li @click="$store.commit('setTheme', 'blue')"><span>天际蓝</span></li>
+              <li @click="$store.commit('setTheme', 'green')"><span>清新绿</span></li>
+              <li @click="$store.commit('setTheme', 'gold')"><span>土豪金</span></li>
             </ul>
           </div>
         </div>
@@ -153,6 +153,11 @@ export default {
       this.showTheme = false
       this.showOption = false
     }, false)
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
+    }
   },
   methods: {
     usernameHandler(num) {

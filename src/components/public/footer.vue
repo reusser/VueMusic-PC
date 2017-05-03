@@ -1,5 +1,5 @@
 <template>
-  <div class="music-footer" ref="footer">
+  <div class="music-footer" ref="footer" :id="theme">
     <audio autoplay controls
       :src="url"
       v-show="false"
@@ -79,6 +79,7 @@
 
 <script>
 import vSlider from '../slider.vue'
+import storage from '../../storage.js'
   /**
    * A module define public footer component
    * @exports vFooter
@@ -107,15 +108,25 @@ import vSlider from '../slider.vue'
       }
     },
     created() {
-      this.$store.dispatch('getInitData')
-      .then(data => this.$store.commit('setMusicList', data))
-      .then(() => {
-        this.axios.get(`http://oyhfe.com:3000/music/url?id=${this.musicList[0].id}`)
+      if (storage.getMusic() != null) {
+        this.$store.commit('setMusicList', storage.getMusic())
+        if (this.musicList.length < 1) return 
+        this.axios.get(`http://localhost:3000/music/url?id=${this.musicList[0].id}`)
           .then(response => {
             this.url = response.data.data[0].url
             this.$store.commit('setPlayIndex', 0)
           })
-      }) 
+      } else {
+        this.$store.dispatch('getInitData')
+        .then(data => this.$store.commit('setMusicList', data))
+        .then(() => {
+          this.axios.get(`http://localhost:3000/music/url?id=${this.musicList[0].id}`)
+          .then(response => {
+            this.url = response.data.data[0].url
+            this.$store.commit('setPlayIndex', 0)
+          })
+        }) 
+      }
     },
     mounted() {
       this.$refs.audio.addEventListener('play', () => {
@@ -170,6 +181,9 @@ import vSlider from '../slider.vue'
       },
       id() {
         return this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex] && this.$store.state.musicList.musicData[this.$store.state.nowPlayIndex].id
+      },
+      theme() {
+        return this.$store.state.theme
       }
     },
     methods: {
@@ -198,7 +212,7 @@ import vSlider from '../slider.vue'
           this.curTimeNum = 0
           return
         } 
-        this.$refs.audio.currentTime = skipWidth / 950 * this.tolTimeNum
+        this.$refs.audio.currentTime = skipWidth / this.width * this.tolTimeNum
         this.curTimeNum = this.$refs.audio.currentTime
       },
       skipVolume(skipWidth) {
@@ -230,7 +244,7 @@ import vSlider from '../slider.vue'
           this.curTimeNum = 0
           return
         } 
-        this.$refs.audio.currentTime = value / 950 * this.tolTimeNum
+        this.$refs.audio.currentTime = value / this.width * this.tolTimeNum
         this.curTimeNum = this.$refs.audio.currentTime
       },
       moveVolume(value) {
@@ -278,7 +292,7 @@ import vSlider from '../slider.vue'
         this.getURL(this.musicList[this.nowPlayIndex].id)
       },
       getURL(id) {
-        this.axios.get(`http://oyhfe.com:3000/music/url?id=${id}`)
+        this.axios.get(`http://localhost:3000/music/url?id=${id}`)
         .then(res => this.url = res.data.data[0].url)
       },
       playOrPause() {
