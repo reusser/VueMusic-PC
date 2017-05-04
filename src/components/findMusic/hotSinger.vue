@@ -1,5 +1,5 @@
 <template>
-  <div class="hot-singer-container">
+  <div class="hot-singer-container" :id="theme">
   <ul class="hot-singer-nav">
     <li @click="$router.push({name: 'findMusic'})">个性推荐</li>
     <li @click="$router.push({name: 'playList'})">歌单</li>
@@ -42,6 +42,11 @@ export default {
         this.hotSingerList.push(obj)
       })
     })
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
+    }
   }
 }
 </script>

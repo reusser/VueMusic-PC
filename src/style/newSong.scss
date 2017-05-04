@@ -102,3 +102,43 @@
     }
   }
 }
+#black {
+  .new-song-nav {
+    border-bottom: 1px solid #202226;
+    li {
+      color: #818284;
+      &:hover {
+        color: #c8c9d0;
+      }
+    }
+    .active {
+      color: #c8c9d0;
+      border-bottom: 3px solid #5c5e61;
+    }
+  }
+  .new-song {
+    border: 1px solid #202226;
+    .song-name {
+      color: #c8c9d0;
+    }
+    img {
+      border-color: transparent;
+    }
+    li {
+      background-color: #1b1d20;
+      .duration {
+        color: #555;
+      }
+    }
+    li:hover {
+      background-color: #242629;
+      .singer,
+      .album {
+        color: #fff;
+      }
+    }
+    li:nth-child(even) {
+      background-color: #16181c;
+    }
+  }
+}

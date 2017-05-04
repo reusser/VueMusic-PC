@@ -1,5 +1,5 @@
 <template>
-  <div class="search-song-list-container">
+  <div class="search-song-list-container" :id="theme">
     <ul class="playlist">
       <li v-for="item in playList" @click="$router.push({name: 'songList', params:{id: item.id}})">
         <img :src="item.imgUrl" class="playlist-logo">
@@ -58,6 +58,9 @@ export default {
       if (this.nowPageIndex < 6) return [2, 3, 4, 5, 6, 7, 8]
       if (this.nowPageIndex > total - 5) return [total - 7, total - 6, total - 5, total - 4, total - 3, total - 2, total - 1]
       return [this.nowPageIndex - 3, this.nowPageIndex - 2, this.nowPageIndex - 1, this.nowPageIndex, this.nowPageIndex + 1, this.nowPageIndex + 2, this.nowPageIndex + 3]
+    },
+    theme() {
+      return this.$store.state.theme
     }
   }
 }

@@ -61,3 +61,31 @@
 .fade-enter, .fade-leave-active {
   opacity: 0
 }
+#black {
+  .search-count {
+    color: #dadbe2;
+  }
+  .nav {
+    span {
+      background-color: #26272b;
+      border-color: transparent;
+      color: #cacbd2;
+      &:hover {
+        background-color: #2d2f32;
+      }
+    }
+    .active {
+      color: #fdf8f8;
+      background-color: #c62f2f;
+      border: 1px solid #c62f2f;
+      &:hover {
+        background-color: #c62f2f;
+      }
+    }
+  }
+  .loading {
+    p {
+      color: #a4a4a4;
+    }
+  }
+}

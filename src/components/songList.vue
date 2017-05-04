@@ -1,5 +1,5 @@
 <template>
-  <div class="song-list-container">
+  <div class="song-list-container" :id="theme">
     <div class="container-head" v-if="!isLoading">
       <div class="list-logo">
         <img :src="imgUrl">
@@ -14,7 +14,7 @@
           <span class="creator">{{creator}}</span>
           <span class="time">{{formatDate(time)}}</span>
         </p>
-        <p v-if="isTag">标签:&nbsp;&nbsp;<span v-for="tag in tags" class="tags"> {{tag}} /</span></p>
+        <p v-if="isTag" class="istag">标签:&nbsp;&nbsp;<span v-for="tag in tags" class="tags"> {{tag}} /</span></p>
         <p v-if="isDescription && (index < 2 || !isToggle)" v-for="(item, index) in description" class="description">{{item}}</p>
         <span class="toggle-btn" @click="isToggle = false" v-if="isToggle && description.length > 2"><i class="fa fa-angle-down"></i></span>
         <div class="count">
@@ -83,6 +83,11 @@ export default {
   },
   created() {
     this.fetchData()
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
+    }
   },
   methods: {
     fetchData() {

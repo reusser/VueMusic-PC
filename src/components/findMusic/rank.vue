@@ -1,5 +1,5 @@
 <template>
-<div class="rank-container">
+<div class="rank-container" :id="theme">
   <ul class="rank-nav">
     <li @click="$router.push({name: 'findMusic'})">个性推荐</li>
     <li @click="$router.push({name: 'playList'})">歌单</li>
@@ -98,6 +98,11 @@ export default {
         })
       }
     })
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
+    }
   },
   methods: {
     fetchData(res) {

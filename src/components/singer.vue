@@ -1,5 +1,5 @@
 <template>
-  <div class="singer-container">
+  <div class="singer-container" :id="theme">
     <div class="singer-head">
       <div class="singer-img">
         <img :src="singerImgUrl">
@@ -94,6 +94,11 @@ export default {
   },
   created() {
     this.fetchData()
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
+    }
   },
   methods: {
     fetchData() {

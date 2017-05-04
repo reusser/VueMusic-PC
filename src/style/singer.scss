@@ -176,3 +176,31 @@
     }
   }
 }
+#black {
+  .singer {
+    color: #c2c3c9;
+  }
+  .detail {
+    p {
+      color: #c2c3c9;
+    }
+  }
+  .albums-title {
+    color: #c2c3c9;
+    &:hover {
+      color: #fff;
+    }
+  }
+  ul {
+    border-color: transparent;
+    li:nth-child(even) {
+      background-color: #1b1d20;
+    }
+    li:hover {
+      background-color: #242629;
+    }
+    .song-name {
+      color: #c2c3c9;
+    }
+  }
+}

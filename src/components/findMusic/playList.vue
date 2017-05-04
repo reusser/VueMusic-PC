@@ -1,5 +1,5 @@
 <template>
-  <div class="playlist-container">
+  <div class="playlist-container" :id="theme">
     <ul class="playlist-nav">
       <li @click="$router.push({name: 'findMusic'})">个性推荐</li>
       <li class="active">歌单</li>
@@ -58,6 +58,11 @@ export default {
   methods: {
     formatCount(count) {
       return count < 100000 ? count : `${Math.floor(count / 10000)}万`
+    }
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
     }
   }
 }

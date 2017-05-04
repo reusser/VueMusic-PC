@@ -229,3 +229,69 @@
 .fade-enter, .fade-leave-active {
   opacity: 0
 }
+#black {
+  .rank-nav {
+    border-bottom: 1px solid #202226;
+    li {
+      color: #818284;
+      &:hover {
+        color: #c8c9d0;
+      }
+    }
+    .active {
+      color: #c8c9d0;
+      border-bottom: 3px solid #5c5e61;
+    }
+  }
+  .title {
+    color: #c3c4ca;
+    border-bottom: 2px solid #22252a;
+  }
+  .other-rank {
+    img {
+      border: 1px solid #22252a;
+    }
+  }
+  .rank {
+    ul {
+      border: 1px solid #22252a;
+      li {
+        background-color: #16181c;
+        &:hover {
+          .singer {
+            color: #fff;
+          }
+          background-color: #1c1e22;
+        }
+      }
+      li:nth-child(odd) {
+        background-color: #1b1d20;
+      }
+      .song-name {
+        color: #c8c9d0;
+      }
+      #all {
+        &:hover {
+          background-color: #1b1d20;
+          span {
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+  .other-rank {
+    .other-rank-name {
+      span:hover {
+        color: #fff;
+      }
+    }
+  }
+  .loading {
+    p {
+      color: #a4a4a4;
+    }
+  }
+}

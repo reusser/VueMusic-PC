@@ -1,5 +1,5 @@
 <template>
-  <div class="new-song-container">
+  <div class="new-song-container" :id="theme">
     <ul class="new-song-nav">
       <li @click="$router.push({name: 'findMusic'})">个性推荐</li>
       <li @click="$router.push({name: 'playList'})">歌单</li>
@@ -65,6 +65,11 @@ export default {
         this.list.musicData.push(obj)
       })
     })
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
+    }
   },
   methods: {
     formatTime(time) {

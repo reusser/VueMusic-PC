@@ -1,5 +1,5 @@
 <template>
-  <div class="album-container">
+  <div class="album-container" :id="theme">
     <div class="album-container-head">
       <div class="album-logo">
         <img :src="albumImgUrl">
@@ -13,7 +13,7 @@
     <div class="nav">
       <span>歌曲列表</span>
     </div>
-    <music-list :musicList="list" :albumName="albumName"></music-list>
+    <music-list :musicList="list" :albumName="albumName" :id="theme"></music-list>
   </div>
 </template>
 
@@ -41,6 +41,11 @@ export default {
   },
   created() {
     this.fetchData()
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
+    }
   },
   methods: {
     fetchData() {

@@ -105,3 +105,46 @@
     }
   }
 }
+#black {
+    li {
+      .music-title {
+        color: #d6d7de;
+      }
+      &:hover {
+        background-color: #242629;
+        color: #d6d7de;
+      }
+    }
+    .music-list-head {
+      .music-title {
+        color: #777;
+      }
+      color: #d6d7de;
+      background: #16181c;
+      border-bottom: 1px solid #22252a;
+      span {
+        border-right: 1px solid #22252a;
+      }
+    }
+    ul {
+      .index,
+      .option {
+        color: #777;
+      }
+      .singer {
+        color: #777;
+      }
+      .album-name {
+        color: #777;
+      }
+      .duration {
+        color: #777;
+      }
+      li:nth-child(odd) {
+        background-color: #1b1c20;
+        &:hover {
+          background-color: #242629;
+        }
+      }
+    }
+}

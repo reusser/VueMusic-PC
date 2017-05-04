@@ -109,3 +109,55 @@
     }
   }
 }
+#black {
+  .playlist {
+    li {
+      color: #c2d1dc;
+      background: #16181c;
+      img {
+        border: 1px solid transparent;
+      }
+      .alias {
+        font-size: 13px;
+        color: #888;
+      }
+      &:hover {
+        background-color: #242629;
+      }
+    } 
+    li:nth-child(even) {
+      background-color: #1b1d20;
+      &:hover {
+        background-color: #242629;
+      }
+    }
+  }
+  .page {
+    ul {
+      .fa {
+        color: #7a7b7d;
+      }
+      li {
+        color: #a4a4a4;
+        &:hover {
+          color: #fff;
+          border: 1px solid #1f2227;
+          background-color: #282b32;
+        }
+      }
+      .pre-btn,
+      .next-btn {
+        border: 2px solid #1f2227;
+        &:hover {
+          border: 2px solid #1f2227;
+        }
+      }
+      .active {
+        color: #c62f2f;
+        &:hover {
+          color: #c62f2f;
+        }
+      }
+    }
+  }
+}

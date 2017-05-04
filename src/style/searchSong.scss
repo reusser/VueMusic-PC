@@ -174,3 +174,79 @@
     }
   }
 }
+#black {
+  li {
+    .music-title {
+      color: #d6d7de;
+    }
+    &:hover {
+      background-color: #242629;
+      color: #d6d7de;
+    }
+  }
+  .search-list-head {
+    .music-title {
+      color: #777;
+    }
+    color: #d6d7de;
+    background: #16181c;
+    border-bottom: 1px solid #22252a;
+    span {
+      border-right: 1px solid #22252a;
+    }
+  }
+  .songs{
+    .index,
+    .option {
+      color: #777;
+    }
+    .singer {
+      color: #777;
+    }
+    .album-name {
+      color: #777;
+    }
+    .duration {
+      color: #777;
+    }
+    li:nth-child(even) {
+      background-color: #1b1c20;
+      &:hover {
+        background-color: #242629;
+      }
+    }
+  }
+  .page {
+    ul {
+      .fa {
+        color: #7a7b7d;
+      }
+      li {
+        color: #a4a4a4;
+        &:hover {
+          color: #fff;
+          border: 1px solid #1f2227;
+          background-color: #282b32;
+        }
+      }
+      .pre-btn,
+      .next-btn {
+        border: 2px solid #1f2227;
+        &:hover {
+          border: 2px solid #1f2227;
+        }
+      }
+      .active {
+        color: #c62f2f;
+        &:hover {
+          color: #c62f2f;
+        }
+      }
+    }
+  }
+  .loading {
+    p {
+      color: #a4a4a4;
+    }
+  }
+}
