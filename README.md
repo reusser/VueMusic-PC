@@ -1,21 +1,37 @@
-# vuemusic-pc
+## 项目地址
+- 由于网易云的api限制，部分功能可能会失效，如有需要可以clone项目下来在本地运行，如果api炸了，麻烦在评论中告知一下我
+- 因为做的是PC端 所以请在电脑端访问
+- [源码地址](https://github.com/Reusjs/VueMusic-PC)
+- [项目预览](http://oyhfe.com/VueMusic)（好像部分api请求过多 我的ip又被封了）
 
-> A vue.js music player
+### 项目描述
+> 前端部分
+- 实现了滑块、弹出层、歌词、分页、轮播等组件 所有组件皆独立完成
+- 使用了Vue.js做单页应用
+- 使用了Vue Router处理路由
+- 使用了Vuex管理组件间的状态，实现非父子组件之间的通信
+- 初始化数据通过localstorage存储
 
-## Build Setup
+> 后端部分
+- 开发环境下使用了express处理路由
+- 通过CORS解决跨域问题
 
-``` bash
-# install dependencies
-npm install
+> 完成情况
+#### 实现了
+（登录功能一开始想做的，但一想大家也不放心把网易云账号密码用来登录，所以还是没做了）
+- 网易云音乐首页（轮播、推荐歌单、每日推荐、热门歌单、排行榜、热门歌手、最新音乐）
+- 切换主题（因为PC端切换主题要改的样式太繁琐，所以只做了黑色和红色的主题）
+- 搜索（歌曲搜索、歌手搜索、歌单搜索、专辑搜索）
+- 播放页面（歌词显示、所有评论显示（分页展示））
+- 歌单、专辑、歌手信息等展示页
+- 当然还有最重要的播放功能（音量调节、快进快退、切歌、当前歌单）
 
-# serve with hot reload at localhost:8080
-npm run dev
 
-# build for production with minification
-npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+> 最后！重点！敲黑板！
+距离上次交作业已经过了二十多天了，一开始也没想到这个项目会花掉我这么久时间，一路踩了很多坑，内容实现也有些繁琐，但是收获还是很多的，增加了Vue全家桶熟练度。
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+欢迎大家提issue，pr
+
+**18届小前端求前端实习中** 简历可看播放器中的 关于我 也可以访问  http://oyhfe.com/resume查看简历
+打完广告 溜了溜了
