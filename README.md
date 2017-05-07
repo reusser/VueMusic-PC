@@ -2,7 +2,7 @@
 - 由于网易云的api限制，部分功能可能会失效，如有需要可以clone项目下来在本地运行，如果api炸了，麻烦在评论中告知一下我
 - 因为做的是PC端 所以请在电脑端访问
 - [源码地址](https://github.com/Reusjs/VueMusic-PC)
-- [项目预览](http://oyhfe.com/VueMusic)（好像部分api请求过多 我的ip又被封了）
+- [项目预览](http://oyhfe.com/VueMusic)（评论和歌单详情api都封了我的ip暂时无法使用这两个功能了）
 
 ### 项目描述
 > 前端部分
